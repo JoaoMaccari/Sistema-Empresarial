@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Table</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Student Data</h1>
+
+    <form method="POST" name="sample">
+        <br>
+            Cliente: <input type="text" name="cliente"> 
+            Quantidade: <input type="number" name="quantidade">
+            Valor: <input type="number" name="valor">
+            <select name="produto" id="prod" onchange="getTipo()">
+
+                <option value="escolha" selected>Produto</option>
+                <option value="t6">Tijolo 6 Furos</option>
+                <option value="t9">Tijolo 9 Furos</option>
+            </select>
+
+            <br><br>
+            <input type="button" name="add" value="Add Data" onclick="addData();" class="btn btn-success"><hr>
+
+                    <table id="tbl" class="table" border="1">
+                        <thead>
+                            <th>Cliente</th> 
+                            <th>Quantidade</th>
+                            <th>Valor</th>
+                             <th>Produto</th> 
+
+                            <th> Delete</th>
+                            <th>Update</th>
+                    
+                        </thead>
+                        
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+                    <span id="val"></span>
+
+    </form>
+
+
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
