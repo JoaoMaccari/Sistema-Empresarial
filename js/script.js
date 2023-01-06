@@ -1,3 +1,18 @@
+
+function getData(){
+    var date = document.getElementById('textData1').value
+    date.value = ''
+    //console.log(date) 
+    var date2 = document.getElementById('textData2').value
+    //console.log(date2.value) 
+    var periodo = document.getElementById('peri')
+
+
+    periodo.innerHTML = date + ' A ' + date2
+
+}
+
+
 function getTipo(){
     let inputSelect = document.getElementById('prod')
     let op = inputSelect.options[inputSelect.selectedIndex].text;
