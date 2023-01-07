@@ -1,3 +1,19 @@
+function getData(){
+    var date = String(document.getElementById('mdp-demo').value)
+    var datas = date.split(" ")
+    var data1 = datas[0]
+    console.log(date)
+    console.log(data1) 
+    
+    
+
+
+    datas.innerHTML = date
+
+}
+
+
+
 function getTipo(){
     let inputSelect = document.getElementById('prod')
     let op = inputSelect.options[inputSelect.selectedIndex].text;
