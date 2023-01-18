@@ -1,3 +1,5 @@
+
+//pega datas
 function getData(){
     var date = document.getElementById('mdp-demo').value
     
@@ -6,6 +8,7 @@ function getData(){
     
 }
 
+//pega produto
 function getTipo(){
     let inputSelect = document.getElementById('prod')
     let op = inputSelect.options[inputSelect.selectedIndex].text;
@@ -22,6 +25,8 @@ function getTipo1(){
     
 }
 
+
+//pega sócio
 function getSocio(){
     let inputSelect = document.getElementById('soc')
     let op = inputSelect.options[inputSelect.selectedIndex].text;
@@ -50,11 +55,6 @@ function addData()
     var socio = getSocio()
     var milheiro=document.sample.milheiro.value
 
-
-    console.log(socio)
-    console.log(tipo)
-
-    
 
     //cria a linha
     var tr = document.createElement('tr');
@@ -87,17 +87,68 @@ function addData()
 
     //    SOMA DOS VALORES   //
     var table = document.getElementById('tbl');
+
     var sumVal = 0;
+    var divisao = 0;
+    var qtTotalTijolos = 0
+    
+    var tot9f = 0
+ 
 
     for(var i =1; i < table.rows.length; i++){
+
         sumVal = sumVal + parseFloat(table.rows[i].cells[4].innerHTML);
+        divisao = sumVal / 2
+
+        qtTotalTijolos += parseFloat(table.rows[i].cells[1].innerHTML);
+
+        if( tipo == "Tijolo 6 Furos solto"){
+            var tot6f = soma6()
+        }
+       
     }
 
-    console.log(sumVal)
+
+
+    
+    
+   
+
+
+
+
+    console.log(`Tipo do produto: ${tipo}`)
+    console.log(`A soma total dos valores é: ${sumVal.toFixed(2)}`)
+    console.log(`A divisão da soma é: ${divisao}`)
+    console.log(`A quantidade total de tijolos é: ${qtTotalTijolos.toFixed(2)}`)
+    console.log(`O total de tijolos 6 furos é: ${tot6f}`)
+    console.log(`O total de tijolos 9 furos é: ${tot9f}`)
+    console.log("----------------------------------------------")
+    
 
     
 
 }
+
+
+//criar funcao soma
+
+function soma6(){
+
+    var table = document.getElementById('tbl');
+    var sum =0
+    var  qtTotalTijolos =0
+    
+    for (var i =1; i < table.rows.length; i++){
+        qtTotalTijolos += parseFloat(table.rows[i].cells[1].innerHTML);
+    }
+
+    return qtTotalTijolos
+
+}
+
+
+
 
 //passa toda a row no argumento
 function UpStud(stud){
@@ -106,8 +157,6 @@ function UpStud(stud){
     var valor=document.sample.valor.value;
     var tipo=getTipo();
     var socio=getSocio()
-    console.log(tipo);
-    console.log(socio)
     var milheiro=document.sample.milheiro.value;
     var s = stud.parentNode.parentNode;
     var tr = document.createElement('tr');
