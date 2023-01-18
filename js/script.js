@@ -1,4 +1,4 @@
-
+var tot6f = 0
 //pega datas
 function getData(){
     var date = document.getElementById('mdp-demo').value
@@ -93,7 +93,7 @@ function addData()
     var divisao = 0;
     var qt = parseFloat(quantidade)
     var qtTotalTijolos = 0
-    var tot6f = 0
+    
     var tot9f = 0
  
 
@@ -104,33 +104,46 @@ function addData()
 
         qtTotalTijolos += parseFloat(table.rows[i].cells[1].innerHTML);
 
-        if( tipo == "Tijolo 6 Furos solto"){
-            //var tot6f = soma6()
-            tot6f += qt
-            
-        }
+        
        
     }
 
+    if( tipo == "Tijolo 6 Furos solto"){
+        tot6f = soma6(qt)
+       //tot6f += qt
+       
+   }
+
 
 
     
-    
+    function soma6(qt){
+        var total =0
+        
+       tot6f += qt
+        total = tot6f
+        console.log(total)
+        return Number(total).toFixed(2)
+
+        
+    }
    
 
 
 
 
-    console.log(`Tipo do produto: ${tipo}`)
+    //console.log(`Tipo do produto: ${tipo}`)
     console.log(`A soma total dos valores é: ${sumVal.toFixed(2)}`)
     console.log(`A divisão da soma é: ${divisao}`)
     console.log(`A quantidade total de tijolos é: ${qtTotalTijolos.toFixed(2)}`)
     console.log(`O total de tijolos 6 furos é: ${tot6f}`)
    // console.log(`O total de tijolos 9 furos é: ${tot9f}`)
-    console.log(quantidade)
+   // console.log(quantidade)
     console.log("----------------------------------------------")
     
 
+
+    
     
 
 }
@@ -138,12 +151,7 @@ function addData()
 
 //criar funcao soma
 
-function soma6(){
 
-   var sum = 0;
-
-
-}
 
 
 
