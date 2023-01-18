@@ -1,63 +1,17 @@
-var tot6f = 0
-var tot9f = 0
+var qtTotalTijolos = 0
 
-//pega datas
-function getData(){
-    var date = document.getElementById('mdp-demo').value
-    
-    console.log(date)
-
-    
-}
-
-//pega produto
-function getTipo(){
-    let inputSelect = document.getElementById('prod')
-    let op = inputSelect.options[inputSelect.selectedIndex].text;
-    //console.log(op)
-    return op;
-    
-}
-
-function getTipo1(){
-    let inputSelect = document.getElementById('prod1')
-    let op = inputSelect.options[inputSelect.selectedIndex].text;
-    //console.log(op)
-    return op;
-    
-}
-
-
-//pega sócio
-function getSocio(){
-    let inputSelect = document.getElementById('soc')
-    let op = inputSelect.options[inputSelect.selectedIndex].text;
-    //console.log(op)
-    return op;
-    
-}
-
-function getSocio1(){
-    let inputSelect = document.getElementById('soc1')
-    let op = inputSelect.options[inputSelect.selectedIndex].text;
-    //console.log(op)
-    return op;
-    
-}
-
-
- 
 function addData()
 { 
     //pega valor dos inputs
     var cliente=document.sample.cliente.value; 
     var quantidade=document.sample.quantidade.value; 
-    console.log(typeof(quantidade))
-    var valor=document.sample.valor.value;
+    
     var tipo = getTipo()
     var socio = getSocio()
     var milheiro=document.sample.milheiro.value
 
+    
+   
 
     //cria a linha
     var tr = document.createElement('tr');
@@ -93,15 +47,21 @@ function addData()
 
     var sumVal = 0;
     var divisao = 0;
-    var qt = parseFloat(quantidade)
-    var qtTotalTijolos = 0
+    var $quantidade = parseFloat(quantidade)
+    var $milheiro = parseFloat(milheiro)
+    
+    
+    
+
+    valor=calculaValor($quantidade, $milheiro)
+    
     
     
  
 
     for(var i =1; i < table.rows.length; i++){
 
-        sumVal = sumVal + parseFloat(table.rows[i].cells[4].innerHTML);
+        sumVal = sumVal + valor
         divisao = sumVal / 2
 
         qtTotalTijolos += parseFloat(table.rows[i].cells[1].innerHTML);
@@ -112,51 +72,32 @@ function addData()
 
     if( tipo == "Tijolo 6 Furos solto"){
 
-        tot6f = soma6(qt)   
+        tot6f = soma6($quantidade)   
     }
 
    if( tipo == "Tijolo 9 Furos solto"){
 
-        tot9f = soma9(qt)
+        tot9f = soma9($quantidade)
     }
-
-
 
     
-    function soma6(qt){
-        
-        var total =0
-        tot6f += qt
-        total = tot6f
-        console.log("o total é : " + total)
 
-        return total
-
-        
-    }
-
-    function soma9(qt){
-        
-        var total =0
-        tot9f += qt
-        total = tot9f
-        console.log("o total é : " + total)
-
-        return total
-
-        
-    }
    
 
 
 
+    
+ 
+
+
 
     //console.log(`Tipo do produto: ${tipo}`)
-    console.log(`A soma total dos valores é: ${sumVal.toFixed(2)}`)
-    console.log(`A divisão da soma é: ${divisao}`)
     console.log(`A quantidade total de tijolos é: ${qtTotalTijolos.toFixed(2)}`)
     console.log(`O total de tijolos 6 furos é: ${tot6f}`)
     console.log(`O total de tijolos 9 furos é: ${tot9f}`)
+    console.log(`A soma total dos valores é: ${sumVal.toFixed(2)}`)
+    console.log(`A divisão da soma é: ${divisao}`)
+
    // console.log(quantidade)
     console.log("----------------------------------------------")
     
