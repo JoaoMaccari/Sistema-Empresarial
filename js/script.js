@@ -1,5 +1,6 @@
 var tot6f = 0
 var tot9f = 0
+
 //pega datas
 function getData(){
     var date = document.getElementById('mdp-demo').value
