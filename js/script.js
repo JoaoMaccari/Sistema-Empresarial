@@ -50,6 +50,7 @@ function addData()
     //pega valor dos inputs
     var cliente=document.sample.cliente.value; 
     var quantidade=document.sample.quantidade.value; 
+    console.log(typeof(quantidade))
     var valor=document.sample.valor.value;
     var tipo = getTipo()
     var socio = getSocio()
@@ -90,8 +91,9 @@ function addData()
 
     var sumVal = 0;
     var divisao = 0;
+    var qt = parseFloat(quantidade)
     var qtTotalTijolos = 0
-    
+    var tot6f = 0
     var tot9f = 0
  
 
@@ -103,7 +105,9 @@ function addData()
         qtTotalTijolos += parseFloat(table.rows[i].cells[1].innerHTML);
 
         if( tipo == "Tijolo 6 Furos solto"){
-            var tot6f = soma6()
+            //var tot6f = soma6()
+            tot6f += qt
+            
         }
        
     }
@@ -122,7 +126,8 @@ function addData()
     console.log(`A divisão da soma é: ${divisao}`)
     console.log(`A quantidade total de tijolos é: ${qtTotalTijolos.toFixed(2)}`)
     console.log(`O total de tijolos 6 furos é: ${tot6f}`)
-    console.log(`O total de tijolos 9 furos é: ${tot9f}`)
+   // console.log(`O total de tijolos 9 furos é: ${tot9f}`)
+    console.log(quantidade)
     console.log("----------------------------------------------")
     
 
@@ -135,15 +140,8 @@ function addData()
 
 function soma6(){
 
-    var table = document.getElementById('tbl');
-    var sum =0
-    var  qtTotalTijolos =0
-    
-    for (var i =1; i < table.rows.length; i++){
-        qtTotalTijolos += parseFloat(table.rows[i].cells[1].innerHTML);
-    }
+   var sum = 0;
 
-    return qtTotalTijolos
 
 }
 
