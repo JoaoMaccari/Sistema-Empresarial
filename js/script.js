@@ -1,4 +1,5 @@
 var tot6f = 0
+var tot9f = 0
 //pega datas
 function getData(){
     var date = document.getElementById('mdp-demo').value
@@ -94,7 +95,7 @@ function addData()
     var qt = parseFloat(quantidade)
     var qtTotalTijolos = 0
     
-    var tot9f = 0
+    
  
 
     for(var i =1; i < table.rows.length; i++){
@@ -109,21 +110,38 @@ function addData()
     }
 
     if( tipo == "Tijolo 6 Furos solto"){
-        tot6f = soma6(qt)
-       //tot6f += qt
-       
-   }
+
+        tot6f = soma6(qt)   
+    }
+
+   if( tipo == "Tijolo 9 Furos solto"){
+
+        tot9f = soma9(qt)
+    }
 
 
 
     
     function soma6(qt){
-        var total =0
         
-       tot6f += qt
+        var total =0
+        tot6f += qt
         total = tot6f
-        console.log(total)
-        return Number(total).toFixed(2)
+        console.log("o total é : " + total)
+
+        return total
+
+        
+    }
+
+    function soma9(qt){
+        
+        var total =0
+        tot9f += qt
+        total = tot9f
+        console.log("o total é : " + total)
+
+        return total
 
         
     }
@@ -137,7 +155,7 @@ function addData()
     console.log(`A divisão da soma é: ${divisao}`)
     console.log(`A quantidade total de tijolos é: ${qtTotalTijolos.toFixed(2)}`)
     console.log(`O total de tijolos 6 furos é: ${tot6f}`)
-   // console.log(`O total de tijolos 9 furos é: ${tot9f}`)
+    console.log(`O total de tijolos 9 furos é: ${tot9f}`)
    // console.log(quantidade)
     console.log("----------------------------------------------")
     
@@ -223,6 +241,9 @@ function addUpStud(stud){
 
     document.getElementById("tbl").replaceChild(tr, s);
 }
+
+
+
 
 function delStudent(Stud){
     var s=Stud.parentNode.parentNode;
