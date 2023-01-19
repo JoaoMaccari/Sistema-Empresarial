@@ -5,10 +5,10 @@ function addData()
     //pega valor dos inputs
     var cliente=document.sample.cliente.value; 
     var quantidade=document.sample.quantidade.value; 
-    
+    var milheiro=document.sample.milheiro.value
     var tipo = getTipo()
     var socio = getSocio()
-    var milheiro=document.sample.milheiro.value
+    
 
     
    
@@ -25,105 +25,91 @@ function addData()
     var td6 = tr.appendChild(document.createElement('td'));
     var td7 = tr.appendChild(document.createElement('td'));
     var td8 = tr.appendChild(document.createElement('td'));
+
+
+    //adiciona a linha a tabela
+    document.getElementById("tbl").appendChild(tr);
+     //    SOMA DOS VALORES   //
+     var table = document.getElementById('tbl');
+
+     var sumVal = 0;
+     var divisao = 0;
+ 
+     var $quantidade = parseFloat(quantidade)
+     var $milheiro = parseFloat(milheiro)
+     var $valor=calculaValor($quantidade, $milheiro)
+ 
+     var form = String($valor)
+     console.log(form, typeof(form))
+ 
+     for(var i =1; i < table.rows.length; i++){
+ 
+         sumVal = sumVal + $valor
+         divisao = sumVal / 2
+     }
+ 
+     qtTotalTijolos += parseFloat($quantidade);
+ 
+     if( tipo == "Tijolo 6 Furos solto"){
+ 
+         tot6f = soma6($quantidade)   
+     }
+ 
+    if( tipo == "Tijolo 9 Furos solto"){
+ 
+         tot9f = soma9($quantidade)
+    }
+
+
     
     //passa os valores pras celulas e cria btn de excluir e add
     td1.innerHTML=cliente;
     td2.innerHTML=quantidade;
     td3.innerHTML=tipo
     td4.innerHTML=milheiro
-    td5.innerHTML=valor
+    td5.innerHTML=$valor
     td6.innerHTML=socio
     td7.innerHTML='<input type="button" name="del" value="Delete" onclick="delStudent(this);" class="btn btn-danger">'
     td8.innerHTML='<input type="button" name="up" value="Update" onclick="UpStud(this);" class="btn btn-primary">'
-
-    
-    //adiciona a linha a tabela
-    document.getElementById("tbl").appendChild(tr);
-
-
-
-    //    SOMA DOS VALORES   //
-    var table = document.getElementById('tbl');
-
-    var sumVal = 0;
-    var divisao = 0;
-    var $quantidade = parseFloat(quantidade)
-    var $milheiro = parseFloat(milheiro)
-    
-    
-    
-
-    valor=calculaValor($quantidade, $milheiro)
-    
-    
-    
- 
-
-    for(var i =1; i < table.rows.length; i++){
-
-        sumVal = sumVal + valor
-        divisao = sumVal / 2
-
-        qtTotalTijolos += parseFloat(table.rows[i].cells[1].innerHTML);
-
-        
-       
-    }
-
-    if( tipo == "Tijolo 6 Furos solto"){
-
-        tot6f = soma6($quantidade)   
-    }
-
-   if( tipo == "Tijolo 9 Furos solto"){
-
-        tot9f = soma9($quantidade)
-    }
-
-    
-
-   
-
-
-
-    
- 
-
-
 
     //console.log(`Tipo do produto: ${tipo}`)
     console.log(`A quantidade total de tijolos é: ${qtTotalTijolos.toFixed(2)}`)
     console.log(`O total de tijolos 6 furos é: ${tot6f}`)
     console.log(`O total de tijolos 9 furos é: ${tot9f}`)
+    console.log(`O valor da carga é : ${$valor}` )
     console.log(`A soma total dos valores é: ${sumVal.toFixed(2)}`)
     console.log(`A divisão da soma é: ${divisao}`)
 
    // console.log(quantidade)
     console.log("----------------------------------------------")
     
-
-
-    
-    
-
 }
-
-
-//criar funcao soma
-
-
-
-
 
 
 //passa toda a row no argumento
 function UpStud(stud){
+    
+        
+
+    var tabela = document.getElementById("tbl");
+    var linhas = tabela.getElementsByTagName("tr");
+    var tds = linha.getElementsByTagName("td")
+
+    for(var i = 0; i < linhas.length; i++){
+        var linha = linhas[i];
+        //var td = tds[i];
+        console.log(linha)
+            
+    }
+
+
     var cliente=document.sample.cliente.value; 
     var quantidade=document.sample.quantidade.value; 
-    var valor=document.sample.valor.value;
     var tipo=getTipo();
     var socio=getSocio()
     var milheiro=document.sample.milheiro.value;
+    
+
     var s = stud.parentNode.parentNode;
     var tr = document.createElement('tr');
     
@@ -149,15 +135,16 @@ function UpStud(stud){
     document.getElementById("tbl").replaceChild(tr, s);
 }
 
+
+
+//passa os dados atualizados para a row
 function addUpStud(stud){
     var cliente=document.sample.cliente1.value; 
     var quantidade=document.sample.quantidade1.value; 
-    var valor=document.sample.valor1.value
     var milheiro=document.sample.milheiro1.value;
     var tipo=getTipo1()
     var socio=getSocio1()
-    console.log(tipo)
-    console.log(socio)
+    
 
     var s = stud.parentNode.parentNode;
     var tr = document.createElement('tr');

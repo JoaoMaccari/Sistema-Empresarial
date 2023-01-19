@@ -77,6 +77,6 @@ function soma9(qt){
 function calculaValor(qt, m){
     
     valor = Number(qt * m)
-    console.log("teste valor: " + valor + ", " + typeof(valor))
+   
     return valor
 }
