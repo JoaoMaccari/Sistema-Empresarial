@@ -9,6 +9,7 @@ function addData()
     var tipo = getTipo()
     var socio = getSocio()
     
+    
 
     
    
@@ -60,14 +61,14 @@ function addData()
          tot9f = soma9($quantidade)
     }
 
-
+    var valorForm = document.getElementById('val').value = $valor
     
     //passa os valores pras celulas e cria btn de excluir e add
     td1.innerHTML=cliente;
     td2.innerHTML=quantidade;
     td3.innerHTML=tipo
     td4.innerHTML=milheiro
-    td5.innerHTML=$valor
+    td5.innerHTML=valorForm
     td6.innerHTML=socio
     td7.innerHTML='<input type="button" name="del" value="Delete" onclick="delStudent(this);" class="btn btn-danger">'
     td8.innerHTML='<input type="button" name="up" value="Update" onclick="UpStud(this);" class="btn btn-primary">'
@@ -91,16 +92,7 @@ function UpStud(stud){
     
         
 
-    var tabela = document.getElementById("tbl");
-    var linhas = tabela.getElementsByTagName("tr");
-    var tds = linha.getElementsByTagName("td")
-
-    for(var i = 0; i < linhas.length; i++){
-        var linha = linhas[i];
-        //var td = tds[i];
-        console.log(linha)
-            
-    }
+   
 
 
     var cliente=document.sample.cliente.value; 
@@ -108,7 +100,7 @@ function UpStud(stud){
     var tipo=getTipo();
     var socio=getSocio()
     var milheiro=document.sample.milheiro.value;
-    
+    var valor=document.sample.valor.value
 
     var s = stud.parentNode.parentNode;
     var tr = document.createElement('tr');
@@ -127,7 +119,7 @@ function UpStud(stud){
     td2.innerHTML='<input type="number" name="quantidade1">';
     td3.innerHTML ='<select name="produto1" id="prod1" onchange="getTipo()"> <option value="escolha" selected>Produto</option> <option value="t6s">Tijolo 6 Furos solto</option> <option value="t6p">Tijolo 6 Furos paletizado</option> <option value="t9s">Tijolo 9 Furos solto</option> <option value="t9p">Tijolo 9 Furos paletizado</option> </select> ' 
     td4.innerHTML ='<input type="number" name="milheiro1">'
-    td5.innerHTML='<input type="number" name="valor1">'
+    td5.innerHTML=
     td6.innerHTML='<select name="socio" id="soc1" onchange="getSocio()"> <option value="M" selected>Marilza</option> <option value="J">Jac</option> </select>'
     td7.innerHTML='<input type="button" name="del" value="Delete" onclick="delStudent(this);" class="btn btn-danger">'
     td8.innerHTML='<input type="button" name="up" value="Update" onclick="addUpStud(this);" class="btn btn-primary">'
@@ -142,6 +134,7 @@ function addUpStud(stud){
     var cliente=document.sample.cliente1.value; 
     var quantidade=document.sample.quantidade1.value; 
     var milheiro=document.sample.milheiro1.value;
+    var valor=document.sample.valor1.value
     var tipo=getTipo1()
     var socio=getSocio1()
     
