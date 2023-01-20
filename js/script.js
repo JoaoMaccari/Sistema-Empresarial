@@ -77,7 +77,7 @@ function addData()
     console.log(`A quantidade total de tijolos é: ${qtTotalTijolos.toFixed(2)}`)
     console.log(`O total de tijolos 6 furos é: ${tot6f}`)
     console.log(`O total de tijolos 9 furos é: ${tot9f}`)
-    console.log(`O valor da carga é : ${$valor}` )
+    console.log(`O valor da carga é : ${$valor.toFixed(2)}` )
     console.log(`A soma total dos valores é: ${sumVal.toFixed(2)}`)
     console.log(`A divisão da soma é: ${divisao}`)
 
@@ -90,17 +90,17 @@ function addData()
 //passa toda a row no argumento
 function UpStud(stud){
     
-        
-
-   
-
-
     var cliente=document.sample.cliente.value; 
     var quantidade=document.sample.quantidade.value; 
     var tipo=getTipo();
     var socio=getSocio()
     var milheiro=document.sample.milheiro.value;
     var valor=document.sample.valor.value
+
+   // var $quantidade = parceFloat(quantidade)
+    //var $milheiro = parceFloat(milheiro)
+    //var $valor=calculaValor($quantidade, $milheiro)
+    console.log(valor, typeof(valor))
 
     var s = stud.parentNode.parentNode;
     var tr = document.createElement('tr');
@@ -119,7 +119,7 @@ function UpStud(stud){
     td2.innerHTML='<input type="number" name="quantidade1">';
     td3.innerHTML ='<select name="produto1" id="prod1" onchange="getTipo()"> <option value="escolha" selected>Produto</option> <option value="t6s">Tijolo 6 Furos solto</option> <option value="t6p">Tijolo 6 Furos paletizado</option> <option value="t9s">Tijolo 9 Furos solto</option> <option value="t9p">Tijolo 9 Furos paletizado</option> </select> ' 
     td4.innerHTML ='<input type="number" name="milheiro1">'
-    td5.innerHTML=
+    td5.innerHTML=valor
     td6.innerHTML='<select name="socio" id="soc1" onchange="getSocio()"> <option value="M" selected>Marilza</option> <option value="J">Jac</option> </select>'
     td7.innerHTML='<input type="button" name="del" value="Delete" onclick="delStudent(this);" class="btn btn-danger">'
     td8.innerHTML='<input type="button" name="up" value="Update" onclick="addUpStud(this);" class="btn btn-primary">'
@@ -131,10 +131,11 @@ function UpStud(stud){
 
 //passa os dados atualizados para a row
 function addUpStud(stud){
+
     var cliente=document.sample.cliente1.value; 
     var quantidade=document.sample.quantidade1.value; 
     var milheiro=document.sample.milheiro1.value;
-    var valor=document.sample.valor1.value
+    var valor=document.sample.valor.value
     var tipo=getTipo1()
     var socio=getSocio1()
     
@@ -156,7 +157,7 @@ function addUpStud(stud){
     td2.innerHTML=quantidade;
     td3.innerHTML=tipo
     td4.innerHTML=milheiro
-    td5.innerHTML=valor;
+    td5.innerHTML=calculaValor(quantidade, milheiro)
     td6.innerHTML=socio
     td7.innerHTML='<input type="button" name="del" value="Delete" onclick="delStudent(this);" class="btn btn-danger">'
     td8.innerHTML='<input type="button" name="up" value="Update" onclick="UpStud(this);" class="btn btn-primary">'
