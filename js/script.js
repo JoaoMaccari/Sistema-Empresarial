@@ -1,4 +1,5 @@
 var qtTotalTijolos = 0
+var sumVal = 0;
 
 function addData()
 { 
@@ -9,10 +10,6 @@ function addData()
     var tipo = getTipo()
     var socio = getSocio()
     
-    
-
-    
-   
 
     //cria a linha
     var tr = document.createElement('tr');
@@ -33,21 +30,27 @@ function addData()
      //    SOMA DOS VALORES   //
      var table = document.getElementById('tbl');
 
-     var sumVal = 0;
+     
      var divisao = 0;
  
      var $quantidade = parseFloat(quantidade)
+     
      var $milheiro = parseFloat(milheiro)
      var $valor=calculaValor($quantidade, $milheiro)
  
-     var form = String($valor)
-     console.log(form, typeof(form))
+     console.log(typeof $milheiro)
+     console.log(typeof $quantidade)
+     console.log(typeof $valor)
+     
  
      for(var i =1; i < table.rows.length; i++){
  
-         sumVal = sumVal + $valor
-         divisao = sumVal / 2
+         
      }
+
+        sumVal += parseFloat($valor.toFixed(2))
+         console.log(sumVal, typeof(sumVal))
+         divisao = sumVal / 2
  
      qtTotalTijolos += parseFloat($quantidade);
  
@@ -61,7 +64,7 @@ function addData()
          tot9f = soma9($quantidade)
     }
 
-    var valorForm = document.getElementById('val').value = $valor
+    var valorForm = document.getElementById('val').value = $valor.toFixed(2)
     
     //passa os valores pras celulas e cria btn de excluir e add
     td1.innerHTML=cliente;
@@ -74,7 +77,7 @@ function addData()
     td8.innerHTML='<input type="button" name="up" value="Update" onclick="UpStud(this);" class="btn btn-primary">'
 
     //console.log(`Tipo do produto: ${tipo}`)
-    console.log(`A quantidade total de tijolos é: ${qtTotalTijolos.toFixed(2)}`)
+    console.log(`A quantidade total de tijolos é: ${qtTotalTijolos}`)
     console.log(`O total de tijolos 6 furos é: ${tot6f}`)
     console.log(`O total de tijolos 9 furos é: ${tot9f}`)
     console.log(`O valor da carga é : ${$valor.toFixed(2)}` )

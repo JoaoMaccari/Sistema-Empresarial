@@ -76,7 +76,7 @@ function soma9(qt){
 
 function calculaValor(qt, m){
     
-    valor = Number(qt * m)
+    valor = parseFloat(qt * m)
    
     return valor
 }
