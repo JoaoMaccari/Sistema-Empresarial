@@ -77,7 +77,7 @@ function addData()
     console.log(`A quantidade total de tijolos é: ${qtTotalTijolos.toFixed(2)}`)
     console.log(`O total de tijolos 6 furos é: ${tot6f}`)
     console.log(`O total de tijolos 9 furos é: ${tot9f}`)
-    console.log(`O valor da carga é : ${$valor}` )
+    console.log(`O valor da carga é : ${$valor.toFixed(2)}` )
     console.log(`A soma total dos valores é: ${sumVal.toFixed(2)}`)
     console.log(`A divisão da soma é: ${divisao}`)
 
