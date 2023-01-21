@@ -80,3 +80,8 @@ function calculaValor(qt, m){
    
     return valor
 }
+
+
+function attDados(){
+    
+}

@@ -37,16 +37,7 @@ function addData()
      
      var $milheiro = parseFloat(milheiro)
      var $valor=calculaValor($quantidade, $milheiro)
- 
-     console.log(typeof $milheiro)
-     console.log(typeof $quantidade)
-     console.log(typeof $valor)
-     
- 
-     for(var i =1; i < table.rows.length; i++){
- 
-         
-     }
+
 
         sumVal += parseFloat($valor.toFixed(2))
          console.log(sumVal, typeof(sumVal))
@@ -93,17 +84,13 @@ function addData()
 //passa toda a row no argumento
 function UpStud(stud){
     
+    //
     var cliente=document.sample.cliente.value; 
     var quantidade=document.sample.quantidade.value; 
     var tipo=getTipo();
-    var socio=getSocio()
+    var socio=getSocio();
     var milheiro=document.sample.milheiro.value;
-    var valor=document.sample.valor.value
-
-   // var $quantidade = parceFloat(quantidade)
-    //var $milheiro = parceFloat(milheiro)
-    //var $valor=calculaValor($quantidade, $milheiro)
-    console.log(valor, typeof(valor))
+    var valor=document.sample.valor.value;
 
     var s = stud.parentNode.parentNode;
     var tr = document.createElement('tr');
@@ -121,11 +108,15 @@ function UpStud(stud){
     td1.innerHTML='<input type="text" name="cliente1">';
     td2.innerHTML='<input type="number" name="quantidade1">';
     td3.innerHTML ='<select name="produto1" id="prod1" onchange="getTipo()"> <option value="escolha" selected>Produto</option> <option value="t6s">Tijolo 6 Furos solto</option> <option value="t6p">Tijolo 6 Furos paletizado</option> <option value="t9s">Tijolo 9 Furos solto</option> <option value="t9p">Tijolo 9 Furos paletizado</option> </select> ' 
-    td4.innerHTML ='<input type="number" name="milheiro1">'
-    td5.innerHTML=valor
-    td6.innerHTML='<select name="socio" id="soc1" onchange="getSocio()"> <option value="M" selected>Marilza</option> <option value="J">Jac</option> </select>'
-    td7.innerHTML='<input type="button" name="del" value="Delete" onclick="delStudent(this);" class="btn btn-danger">'
-    td8.innerHTML='<input type="button" name="up" value="Update" onclick="addUpStud(this);" class="btn btn-primary">'
+    td4.innerHTML ='<input type="number" name="milheiro1">';
+    td5.innerHTML=valor;
+    td6.innerHTML='<select name="socio" id="soc1" onchange="getSocio()"> <option value="M" selected>Marilza</option> <option value="J">Jac</option> </select>';
+    td7.innerHTML='<input type="button" name="del" value="Delete" onclick="delStudent(this);" class="btn btn-danger">';
+    td8.innerHTML='<input type="button" name="up" value="Update" onclick="addUpStud(this);" class="btn btn-primary">';
+
+    
+    
+   
 
     document.getElementById("tbl").replaceChild(tr, s);
 }
@@ -136,12 +127,20 @@ function UpStud(stud){
 function addUpStud(stud){
 
     var cliente=document.sample.cliente1.value; 
+
     var quantidade=document.sample.quantidade1.value; 
+    var quantidadeF=document.sample.quantidade.value
+
     var milheiro=document.sample.milheiro1.value;
     var valor=document.sample.valor.value
     var tipo=getTipo1()
     var socio=getSocio1()
-    
+
+    var $quantidade = parseFloat(quantidade)
+    var $quantidadeF = parseFloat(quantidadeF)
+
+    var $milheiro = parseFloat(milheiro)
+    var $valor=calculaValor($quantidade, $milheiro)
 
     var s = stud.parentNode.parentNode;
     var tr = document.createElement('tr');
@@ -165,7 +164,28 @@ function addUpStud(stud){
     td7.innerHTML='<input type="button" name="del" value="Delete" onclick="delStudent(this);" class="btn btn-danger">'
     td8.innerHTML='<input type="button" name="up" value="Update" onclick="UpStud(this);" class="btn btn-primary">'
 
+
+    //console.log(`A quantidade total de tijolos é: ${qtTotalTijolos}`)
+    //console.log(`O total de tijolos 6 furos é: ${tot6f}`)
+    //console.log(`O total de tijolos 9 furos é: ${tot9f}`)
+    //console.log(`O valor da carga é : ${$valor.toFixed(2)}` )
+    //console.log(`A soma total dos valores é: ${sumVal.toFixed(2)}`)
+    //console.log(`A divisão da soma é: ${divisao}`)
+
+    
+    console.log("qt do form " + $quantidadeF)
+    console.log("qt atualizada " + $quantidade)
+
+    if($quantidade < $quantidadeF){
+        var diferenca =  ($quantidadeF - $quantidade) 
+        qtTotalTijolos -= diferenca 
+    }else{
+        
+        qtTotalTijolos += $quantidade
+    }
+
     document.getElementById("tbl").replaceChild(tr, s);
+    console.log(qtTotalTijolos , typeof(qtTotalTijolos))
 }
 
 
