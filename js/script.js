@@ -1,6 +1,12 @@
 var qtTotalTijolos = 0
 var sumVal = 0;
 
+var venda = {
+ 
+}
+
+
+console.log(vendaForm.cliente)
 function addData()
 { 
     //pega valor dos inputs
@@ -9,6 +15,7 @@ function addData()
     var milheiro=document.sample.milheiro.value
     var tipo = getTipo()
     var socio = getSocio()
+    
     
 
     //cria a linha
