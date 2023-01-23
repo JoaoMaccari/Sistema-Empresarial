@@ -23,33 +23,37 @@
 
 
     
-        <form method="POST" name="sample" id="form">
+        <form method="POST" name="sample" id="form" class="form-control">
             <br>
-                Cliente: <input type="text" name="cliente" id="cliente"> 
-                Quantidade: <input type="number" name="quantidade">
-                
-                <select name="produto" id="prod" onchange="getTipo()">
+                <div class="form-group">
+                    Cliente: <input type="text" name="cliente" id="cliente"> 
+                    Quantidade: <input type="number" name="quantidade">
+                    
+                    <select name="produto" id="prod" onchange="getTipo()">
 
-                    <option value="escolha" selected>Produto</option>
-                    <option value="t6s">Tijolo 6 Furos solto</option>
-                    <option value="t6p">Tijolo 6 Furos paletizado</option>
-                    <option value="t9s">Tijolo 9 Furos solto</option>
-                    <option value="t9p">Tijolo 9 Furos paletizado</option>
-                    <option value="tav">Tavela</option>
+                        <option value="escolha" selected>Produto</option>
+                        <option value="t6s">Tijolo 6 Furos solto</option>
+                        <option value="t6p">Tijolo 6 Furos paletizado</option>
+                        <option value="t9s">Tijolo 9 Furos solto</option>
+                        <option value="t9p">Tijolo 9 Furos paletizado</option>
+                        <option value="tav">Tavela</option>
 
-                </select>
+                    </select>
 
-                Milheiro: <input type ='number' name="milheiro" >
-                Pago para:
-                <select name="socio" id="soc" onchange="getSocio()">
+                    Milheiro: <input type ='number' name="milheiro" >
+                    Pago para:
+                    <select name="socio" id="soc" onchange="getSocio()">
 
-                    <option value="M" selected>Marilza</option>
-                    <option value="J">Jac</option>
-                
-                </select>
-                Valor: <input type="text" id="val" name="valor">
-                <br><br>
-                <input type="button" name="add" value="Adicionar Dados" onclick="addData();" class="btn btn-success"><hr>
+                        <option value="M" selected>Marilza</option>
+                        <option value="J">Jac</option>
+                    
+                    </select>
+                    Valor: <input type="text" id="val" name="valor">
+                    <br><br>
+                    <input type="button" name="add" value="Adicionar Dados" onclick="addData();" class="btn btn-success">
+                    <input type="reset" value="Limpar Campos" class="btn btn-primary">
+                </div>  
+                <hr>
 
                         <table id="tbl" class="table" border="1">
                             <thead>
