@@ -112,12 +112,12 @@ function UpStud(stud){
     var td8 = tr.appendChild(document.createElement('td'));
     
     
-    td1.innerHTML='<input type="text" name="cliente1">';
-    td2.innerHTML='<input type="number" name="quantidade1">';
-    td3.innerHTML ='<select name="produto1" id="prod1" onchange="getTipo()"> <option value="escolha" selected>Produto</option> <option value="t6s">Tijolo 6 Furos solto</option> <option value="t6p">Tijolo 6 Furos paletizado</option> <option value="t9s">Tijolo 9 Furos solto</option> <option value="t9p">Tijolo 9 Furos paletizado</option> </select> ' 
-    td4.innerHTML ='<input type="number" name="milheiro1">';
+    td1.innerHTML='<input type="text" name="cliente1" class="border border-dark form-control">';
+    td2.innerHTML='<input type="number" name="quantidade1" class="border border-dark form-control">';
+    td3.innerHTML ='<select name="produto1" id="prod1" onchange="getTipo()"  class="border border-dark form-control"> <option value="escolha" selected>Produto</option> <option value="t6s">Tijolo 6 Furos solto</option> <option value="t6p">Tijolo 6 Furos paletizado</option> <option value="t9s">Tijolo 9 Furos solto</option> <option value="t9p">Tijolo 9 Furos paletizado</option> </select> ' 
+    td4.innerHTML ='<input type="number" name="milheiro1" class="border border-dark form-control">';
     td5.innerHTML=valor;
-    td6.innerHTML='<select name="socio" id="soc1" onchange="getSocio()"> <option value="M" selected>Marilza</option> <option value="J">Jac</option> </select>';
+    td6.innerHTML='<select name="socio" id="soc1" onchange="getSocio()"  class="border border-dark form-control"> <option value="M" selected>Marilza</option> <option value="J">Jac</option> </select>';
     td7.innerHTML='<input type="button" name="del" value="Delete" onclick="delStudent(this);" class="btn btn-danger">';
     td8.innerHTML='<input type="button" name="up" value="Update" onclick="addUpStud(this);" class="btn btn-primary">';
 
