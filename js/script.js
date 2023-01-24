@@ -1,15 +1,13 @@
+
 var qtTotalTijolos = 0
 var sumVal = 0;
+var form = document.getElementById("form")
 
-var venda = {
- 
-}
-
-
-console.log(vendaForm.cliente)
 function addData()
-{ 
-    //pega valor dos inputs
+{   
+    
+
+    //pega valor dos inputs e passa pra linhas da tabela
     var cliente=document.sample.cliente.value; 
     var quantidade=document.sample.quantidade.value; 
     var milheiro=document.sample.milheiro.value
@@ -34,6 +32,9 @@ function addData()
 
     //adiciona a linha a tabela
     document.getElementById("tbl").appendChild(tr);
+
+
+
      //    SOMA DOS VALORES   //
      var table = document.getElementById('tbl');
 
@@ -74,7 +75,8 @@ function addData()
     td7.innerHTML='<input type="button" name="del" value="Delete" onclick="delStudent(this);" class="btn btn-danger">'
     td8.innerHTML='<input type="button" name="up" value="Update" onclick="UpStud(this);" class="btn btn-primary">'
 
-    //console.log(`Tipo do produto: ${tipo}`)
+    
+    console.log(`Tipo do produto: ${tipo}`)
     console.log(`A quantidade total de tijolos é: ${qtTotalTijolos}`)
     console.log(`O total de tijolos 6 furos é: ${tot6f}`)
     console.log(`O total de tijolos 9 furos é: ${tot9f}`)
@@ -84,6 +86,8 @@ function addData()
 
    // console.log(quantidade)
     console.log("----------------------------------------------")
+
+    
     
 }
 
@@ -99,7 +103,11 @@ function UpStud(stud){
     var milheiro=document.sample.milheiro.value;
     var valor=document.sample.valor.value;
 
+
+   
     var s = stud.parentNode.parentNode;
+    //console.log(ss)
+    console.log(s)
     var tr = document.createElement('tr');
     
     var td1 = tr.appendChild(document.createElement('td'));
@@ -133,14 +141,19 @@ function UpStud(stud){
 //passa os dados atualizados para a row
 function addUpStud(stud){
 
-    var cliente=document.sample.cliente1.value; 
+    var cliente=document.sample.cliente1.value;
+    var clienteF = document.sample.quantidade.value; 
 
     var quantidade=document.sample.quantidade1.value; 
     var quantidadeF=document.sample.quantidade.value
-
+    
     var milheiro=document.sample.milheiro1.value;
+    var milheiroF=document.sample.milheiro1.value;
+
     var valor=document.sample.valor.value
+
     var tipo=getTipo1()
+    
     var socio=getSocio1()
 
     var $quantidade = parseFloat(quantidade)
@@ -150,6 +163,7 @@ function addUpStud(stud){
     var $valor=calculaValor($quantidade, $milheiro)
 
     var s = stud.parentNode.parentNode;
+    
     var tr = document.createElement('tr');
     
     var td1 = tr.appendChild(document.createElement('td'));
@@ -190,6 +204,8 @@ function addUpStud(stud){
         
         qtTotalTijolos += $quantidade
     }
+
+    
 
     document.getElementById("tbl").replaceChild(tr, s);
     console.log(qtTotalTijolos , typeof(qtTotalTijolos))
