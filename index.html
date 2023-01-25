@@ -26,16 +26,12 @@
         </div>
         
         
-        
-            
-        
-
         <form method="POST" name="sample" id="form">
             <br>
                 <div class="row">
                 <div class="form-group col-md-4">
                     <label for="inputCliente">Cliente</label>
-                    <input type="text" name="cliente" id="cliente" class="form-control"> 
+                    <input type="text" name="cliente" id="cliente" class="form-control text-end"> 
                     
                 </div>
 
@@ -93,7 +89,7 @@
             <br><br>
             <input type="button" name="add" value="Adicionar Dados" onclick="addData();" class="btn btn-success"><hr>
 
-            <table id="tbl" class="table" >
+            <table id="tbl" class="table table-bordered"  >
                 <thead>
                     <th scope="col">Cliente</th> 
                     <th scope="col">Quantidade</th>
@@ -111,11 +107,30 @@
                 </tbody>
 
             </table>
-            <span id="val"></span>
 
-                        
-                
         </form>
+
+        <div class="col-5">
+            <div class="input-group mb-3">
+                <span class="input-group-text" >Total$</span>
+                <input type="number" class="form-control text-end" id="FTotal" name="FTotal" disabled="">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" >Divisão</span>
+                <input type="number" class="form-control text-end" id="divisao" name="divisao">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" >total Tijolos</span>
+                <input type="number" class="form-control text-end" id="qtTotal" name="qtTotal" disabled="">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" >total Tijolos 6 Furos</span>
+                <input type="number" class="form-control text-end" id="qtTotal6" name="qtTotal6" disabled="">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" >total Tijolos 9 Furos</span>
+                <input type="number" class="form-control text-end" id="qtTotal9" name="qtTotal9" disabled="">
+            </div>
 
 
     </div>

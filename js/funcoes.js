@@ -1,7 +1,9 @@
 var tot6f = 0
 var tot9f = 0
 var valor = 0
-
+var divisao = 0;
+var qtTotalTijolos = 0
+var sumVal = 0;
 
 
 
@@ -93,6 +95,40 @@ function calculaValor(qt, m){
 }
 
 
-function attDados(){
+function getTotal(v, qt, t, s){
+   
+
+    console.log(v, qt, t, s)
+     sumVal += v
+     divisao = sumVal / 2;
+     qtTotalTijolos += parseFloat(qt)
+
+     if( t == "Tijolo 6 Furos solto"){
+ 
+         tot6f = soma6(qt)   
+    }
+
+   if( t == "Tijolo 9 Furos solto"){
+
+        tot9f = soma9(qt)
+   }
+
+
+   var total = document.getElementById("FTotal").value = sumVal;
+   var divi = document.getElementById("divisao").value = divisao;
+   var qtTotal = document.getElementById("qtTotal").value = qtTotalTijolos;
+   var qt6 = document.getElementById("qtTotal6").value = tot6f
+   var qt9 = document.getElementById("qtTotal9").value = tot9f
+
+    console.log(`Tipo do produto: ${t}`)
+    console.log(`A quantidade total de tijolos é: ${qtTotalTijolos}`)
+    console.log(`O total de tijolos 6 furos é: ${tot6f}`)
+    console.log(`O total de tijolos 9 furos é: ${tot9f}`)
+    console.log(`O valor da carga é : ${v.toFixed(2)}` )
+    console.log(`A soma total dos valores é: ${sumVal.toFixed(2)}`)
+    console.log(`A divisão da soma é: ${divisao}`)
+    console.log('------------------------------------------------------')
+     
+
     
 }
