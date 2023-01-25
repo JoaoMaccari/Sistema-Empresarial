@@ -3,6 +3,9 @@ var qtTotalTijolos = 0
 var sumVal = 0;
 var form = document.getElementById("form")
 
+
+
+
 function addData()
 {   
     

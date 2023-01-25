@@ -5,7 +5,6 @@ var valor = 0
 
 
 
-
 function getData(){
     var date = document.getElementById('mdp-demo').value
     
@@ -13,6 +12,18 @@ function getData(){
 
     
 }
+
+var containerr = document.getElementById("containerr")
+var btn = document.getElementById("action-btn")
+
+btn.addEventListener("click" , function(){
+    if(containerr.style.display === "none"){
+        containerr.style.display = "block"
+    }else{
+        containerr.style.display = "none"
+    }
+})
+
 
 //pega produto
 function getTipo(){
