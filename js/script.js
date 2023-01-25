@@ -1,12 +1,9 @@
 
-
 var form = document.getElementById("form")
-
 
 function addData()
 {   
     
-
     //pega valor dos inputs e passa pra linhas da tabela
     var cliente=document.sample.cliente.value; 
     var quantidade=document.sample.quantidade.value; 
@@ -14,8 +11,6 @@ function addData()
     var tipo = getTipo()
     var socio = getSocio()
     
-    
-
     //cria a linha
     var tr = document.createElement('tr');
    
@@ -26,14 +21,11 @@ function addData()
     var td4 = tr.appendChild(document.createElement('td'));
     var td5 = tr.appendChild(document.createElement('td'));
     var td6 = tr.appendChild(document.createElement('td'));
-    var td7 = tr.appendChild(document.createElement('td'));
-    var td8 = tr.appendChild(document.createElement('td'));
-
+    var td7 = tr.appendChild(document.createElement('button'));
+    var td8 = tr.appendChild(document.createElement('button'));
 
     //adiciona a linha a tabela
     document.getElementById("tbl").appendChild(tr);
-
-
 
      //    SOMA DOS VALORES   //
 
@@ -56,13 +48,13 @@ function addData()
     td7.innerHTML='<input type="button" name="del" value="Delete" onclick="delStudent(this);" class="btn btn-danger">'
     td8.innerHTML='<input type="button" name="up" value="Update" onclick="UpStud(this);" class="btn btn-primary">' 
     
+    //'<button name="up" value="Update" onclick="UpStud(this);" class="btn">Update</button>'
 }
 
 
 //passa toda a row no argumento
 function UpStud(stud){
     
-    //
     var cliente=document.sample.cliente.value; 
     var quantidade=document.sample.quantidade.value; 
     var tipo=getTipo();
@@ -96,35 +88,27 @@ function UpStud(stud){
 }
 
 
-
 //passa os dados atualizados para a row
 function addUpStud(stud){
 
     var cliente=document.sample.cliente1.value;
-    var clienteF = document.sample.quantidade.value; 
-
     var quantidade=document.sample.quantidade1.value; 
-    var quantidadeF=document.sample.quantidade.value
-    
     var milheiro=document.sample.milheiro1.value;
-    var milheiroF=document.sample.milheiro1.value;
-
     var valor=document.sample.valor.value
-
     var tipo=getTipo1()
-    
     var socio=getSocio1()
 
     var $quantidade = parseFloat(quantidade)
-    var $quantidadeF = parseFloat(quantidadeF)
-
+    
     var $milheiro = parseFloat(milheiro)
     var $valor=calculaValor($quantidade, $milheiro)
 
     var s = stud.parentNode.parentNode;
-    
     var tr = document.createElement('tr');
     
+
+    getTotal()
+
     var td1 = tr.appendChild(document.createElement('td'));
     var td2 = tr.appendChild(document.createElement('td'));
     var td3 = tr.appendChild(document.createElement('td'));
@@ -144,21 +128,6 @@ function addUpStud(stud){
     td7.innerHTML='<input type="button" name="del" value="Delete" onclick="delStudent(this);" class="btn btn-danger">'
     td8.innerHTML='<input type="button" name="up" value="Update" onclick="UpStud(this);" class="btn btn-primary">'
     
-
-
-    // console.log("qt do form " + $quantidadeF)
-    // console.log("qt atualizada " + $quantidade)
-
-    // if($quantidade < $quantidadeF){
-    //     var diferenca =  ($quantidadeF - $quantidade) 
-    //     qtTotalTijolos -= diferenca 
-    // }else{
-        
-    //     qtTotalTijolos += $quantidade
-    // }
-
-    
-
     document.getElementById("tbl").replaceChild(tr, s);
     //console.log(qtTotalTijolos , typeof(qtTotalTijolos))
 }

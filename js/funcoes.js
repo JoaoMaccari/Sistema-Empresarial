@@ -31,7 +31,7 @@ btn.addEventListener("click" , function(){
 function getTipo(){
     let inputSelect = document.getElementById('prod')
     let op = inputSelect.options[inputSelect.selectedIndex].text;
-    //console.log(op)
+    
     return op;
     
 }
@@ -39,7 +39,7 @@ function getTipo(){
 function getTipo1(){
     let inputSelect = document.getElementById('prod1')
     let op = inputSelect.options[inputSelect.selectedIndex].text;
-    //console.log(op)
+    
     return op;
     
 }
@@ -49,7 +49,7 @@ function getTipo1(){
 function getSocio(){
     let inputSelect = document.getElementById('soc')
     let op = inputSelect.options[inputSelect.selectedIndex].text;
-    //console.log(op)
+    
     return op;
     
 }
@@ -57,7 +57,7 @@ function getSocio(){
 function getSocio1(){
     let inputSelect = document.getElementById('soc1')
     let op = inputSelect.options[inputSelect.selectedIndex].text;
-    //console.log(op)
+    
     return op;
     
 }
@@ -71,8 +71,6 @@ function soma6(qt){
     
 
     return total
-
-    
 }
 
 function soma9(qt){
@@ -83,8 +81,6 @@ function soma9(qt){
 
 
     return total
-
-    
 }
 
 function calculaValor(qt, m){
@@ -99,17 +95,18 @@ function getTotal(v, qt, t, s){
    
 
     console.log(v, qt, t, s)
-     sumVal += v
-     divisao = sumVal / 2;
-     qtTotalTijolos += parseFloat(qt)
 
-     if( t == "Tijolo 6 Furos solto"){
+    sumVal += v
+    divisao = sumVal / 2;
+    qtTotalTijolos += parseFloat(qt)
+
+    if( t == "Tijolo 6 Furos solto"){
  
-         tot6f = soma6(qt)   
+        tot6f = soma6(qt)   
     }
 
    if( t == "Tijolo 9 Furos solto"){
-
+    
         tot9f = soma9(qt)
    }
 
