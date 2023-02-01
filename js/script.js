@@ -1,4 +1,4 @@
-let vendas = document.querySelectorAll(".sales")
+
 const salesRows = []
 
 
@@ -7,11 +7,11 @@ const salesRows = []
 function addData()
 {   
 
-    var form = document.querySelector('#form')
-    var sale = obtemVendaFormulario(form)
+    //var form = document.querySelector('#form')
+    //var sale = obtemVendaFormulario(form)
     
-    salesRows.push(sale)
-    console.log(salesRows)
+    //salesRows.push(sale)
+   // console.log(salesRows)
 
    
 
@@ -25,6 +25,7 @@ function addData()
 
     //cria a linha
     var tr = document.createElement('tr');
+     tr.classList.add("vendas");
    
     //cria as celulas
     var td1 = tr.appendChild(document.createElement('td'));
@@ -80,7 +81,8 @@ function UpStud(stud){
 
     var s = stud.parentNode.parentNode;
     var tr = document.createElement('tr');
-    
+    tr.classList.add("vendas");
+
     var td1 = tr.appendChild(document.createElement('td'));
     var td2 = tr.appendChild(document.createElement('td'));
     var td3 = tr.appendChild(document.createElement('td'));
@@ -102,7 +104,7 @@ function UpStud(stud){
 
     document.getElementById("tbl").replaceChild(tr, s);
 
-
+    listaTabela()
 }
 
 
@@ -123,9 +125,10 @@ function addUpStud(stud){
 
     var s = stud.parentNode.parentNode;
     var tr = document.createElement('tr');
+    tr.classList.add("vendas");
     
 
-    getTotal()
+    getTotal($valor, $quantidade, tipo, socio)
 
     var td1 = tr.appendChild(document.createElement('td'));
     var td2 = tr.appendChild(document.createElement('td'));
@@ -160,20 +163,20 @@ function delStudent(Stud){
 }
 
 
-function obtemVendaFormulario(form){
-    let sale = {
-        cliente: form.cliente.value,
-        quantidade:form.quantidade.value,
-        produto:form.produto.value,
-        socio: form.socio.value,
-        milheiro: form.milheiro.value,
-        valorVenda: Number(calculaValor(form.quantidade.value, form.milheiro.value)),
+// function obtemVendaFormulario(form){
+//     let sale = {
+//         cliente: form.cliente.value,
+//         quantidade:form.quantidade.value,
+//         produto:form.produto.value,
+//         socio: form.socio.value,
+//         milheiro: form.milheiro.value,
+//         valorVenda: Number(calculaValor(form.quantidade.value, form.milheiro.value)),
         
 
-        //total6Furos: soma6( Number(form.quantidade.value)),
-        //total9Furos: soma9( Number(form.quantidade.value))
-    }
+//         total6Furos: soma6( Number(form.quantidade.value)),
+//         total9Furos: soma9( Number(form.quantidade.value))
+//     }
 
-    return sale
-}
+//     return sale
+// }
 

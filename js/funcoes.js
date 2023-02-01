@@ -1,9 +1,25 @@
+let tabela = document.getElementById('tbl')
+let rows = document.querySelectorAll('.vendas')
+
 var tot6f = 0
 var tot9f = 0
 var valor = 0
 var divisao = 0;
 var qtTotalTijolos = 0
 var sumVal = 0;
+
+function listaTabela(){
+    for(let i = 0; i<rows.length; i++){
+        let venda = rows[i]
+    
+        console.log(venda)
+    }
+    
+}
+
+
+
+
 
 
 
@@ -94,9 +110,9 @@ function calculaValor(qt, m){
 function getTotal(v, qt, t, s){
    
 
-    //console.log(v, qt, t, s)
+    console.log(v, qt, t, s)
 
-    sumVal += v
+    sumVal += Number(v)
     divisao = sumVal / 2;
     qtTotalTijolos += parseFloat(qt)
 
@@ -111,6 +127,7 @@ function getTotal(v, qt, t, s){
    }
 
 
+   //passa os valores para o html
    var total = document.getElementById("FTotal").value = sumVal;
    var divi = document.getElementById("divisao").value = divisao;
    var qtTotal = document.getElementById("qtTotal").value = qtTotalTijolos;
@@ -121,10 +138,16 @@ function getTotal(v, qt, t, s){
     console.log(`A quantidade total de tijolos é: ${qtTotalTijolos}`)
     console.log(`O total de tijolos 6 furos é: ${tot6f}`)
     console.log(`O total de tijolos 9 furos é: ${tot9f}`)
-    console.log(`O valor da carga é : ${v.toFixed(2)}` )
+    console.log(`O valor da carga é : ${v}` )
     console.log(`A soma total dos valores é: ${sumVal.toFixed(2)}`)
     console.log(`A divisão da soma é: ${divisao}`)
     console.log('------------------------------------------------------')
+
+
+ 
+    
+    
+    
      
 
     
