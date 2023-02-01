@@ -1,16 +1,28 @@
+let vendas = document.querySelectorAll(".sales")
+const salesRows = []
 
-var form = document.getElementById("form")
+
+
 
 function addData()
 {   
+
+    var form = document.querySelector('#form')
+    var sale = obtemVendaFormulario(form)
     
+    salesRows.push(sale)
+    console.log(salesRows)
+
+   
+
     //pega valor dos inputs e passa pra linhas da tabela
     var cliente=document.sample.cliente.value; 
     var quantidade=document.sample.quantidade.value; 
     var milheiro=document.sample.milheiro.value
     var tipo = getTipo()
     var socio = getSocio()
-    
+
+
     //cria a linha
     var tr = document.createElement('tr');
    
@@ -21,8 +33,10 @@ function addData()
     var td4 = tr.appendChild(document.createElement('td'));
     var td5 = tr.appendChild(document.createElement('td'));
     var td6 = tr.appendChild(document.createElement('td'));
-    var td7 = tr.appendChild(document.createElement('button'));
-    var td8 = tr.appendChild(document.createElement('button'));
+    var td7 = tr.appendChild(document.createElement('td'));
+    var td8 = tr.appendChild(document.createElement('td'));
+
+   
 
     //adiciona a linha a tabela
     document.getElementById("tbl").appendChild(tr);
@@ -34,6 +48,8 @@ function addData()
     var $valor=calculaValor($quantidade, $milheiro)
     
     getTotal($valor, $quantidade, tipo, socio)
+
+ 
 
     //passa o valor da compra para o formulário
     var valorForm = document.getElementById('val').value = $valor.toFixed(2)
@@ -48,7 +64,7 @@ function addData()
     td7.innerHTML='<input type="button" name="del" value="Delete" onclick="delStudent(this);" class="btn btn-danger">'
     td8.innerHTML='<input type="button" name="up" value="Update" onclick="UpStud(this);" class="btn btn-primary">' 
     
-    //'<button name="up" value="Update" onclick="UpStud(this);" class="btn">Update</button>'
+    
 }
 
 
@@ -85,6 +101,8 @@ function UpStud(stud){
     td8.innerHTML='<input type="button" name="up" value="Update" onclick="addUpStud(this);" class="btn btn-primary">';
 
     document.getElementById("tbl").replaceChild(tr, s);
+
+
 }
 
 
@@ -129,7 +147,8 @@ function addUpStud(stud){
     td8.innerHTML='<input type="button" name="up" value="Update" onclick="UpStud(this);" class="btn btn-primary">'
     
     document.getElementById("tbl").replaceChild(tr, s);
-    //console.log(qtTotalTijolos , typeof(qtTotalTijolos))
+    
+
 }
 
 
@@ -140,4 +159,21 @@ function delStudent(Stud){
     s.parentNode.removeChild(s);
 }
 
+
+function obtemVendaFormulario(form){
+    let sale = {
+        cliente: form.cliente.value,
+        quantidade:form.quantidade.value,
+        produto:form.produto.value,
+        socio: form.socio.value,
+        milheiro: form.milheiro.value,
+        valorVenda: Number(calculaValor(form.quantidade.value, form.milheiro.value)),
+        
+
+        //total6Furos: soma6( Number(form.quantidade.value)),
+        //total9Furos: soma9( Number(form.quantidade.value))
+    }
+
+    return sale
+}
 

@@ -94,7 +94,7 @@ function calculaValor(qt, m){
 function getTotal(v, qt, t, s){
    
 
-    console.log(v, qt, t, s)
+    //console.log(v, qt, t, s)
 
     sumVal += v
     divisao = sumVal / 2;
