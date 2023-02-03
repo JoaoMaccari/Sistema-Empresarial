@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- bootstrap -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <!-- script dataPicker -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/dubrox/Multiple-Dates-Picker-for-jQuery-UI@master/jquery-ui.multidatespicker.js"></script>
+
+    <!-- css dataPicker -->
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+
+
+    <title>Sistema Vendas</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    
+</head>
+<body>
+
+    <header>
+        <h1>Minhas vendas</h1>
+    </header>
+
+    <main>
+        <div class="tittle">
+            <h2>Produtos</h2>
+            <span>Lista de vendas</span>
+
+        </div>
+
+
+
+
+        <form role="form" class="card" name="form">
+            <fieldset>
+                <div class="row">
+                    <div class="form-group col-lg-4 ">
+                        <label for="inputCliente">Cliente</label>
+                        <input type="text" name="cliente" class="form-control" id="inputCliente" placeholder="Insira o nome do cliente">
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label for="inputQuantidade">Quantidade</label>
+                        <input type="number" class="form-control" id="inputQuantidade" name="quantidade" placeholder="Insira a quantidade">
+                    </div>
+
+                    <div class="form-group col-lg-4">
+                        <label for="inputProduto">Produto</label>
+                        <select class="form-control" onchange="getTipo()">
+                            <option value="escolha" id="inputProduto" name="produto" selected>Insira o produto</option>
+                            <option value="t6s">Tijolo 6 Furos solto</option>
+                            <option value="t6p">Tijolo 6 Furos paletizado</option>
+                            <option value="t8s">Tijolo 8 Furos solto</option>
+                            <option value="t8p">Tijolo 8 Furos paletizado</option>
+                            <option value="t9s">Tijolo 9 Furos solto</option>
+                            <option value="t9p">Tijolo 9 Furos paletizado</option>
+                            <option value="tav">Tavela</option>
+                        </select>
+                    </div>
+
+                    
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-4">
+                        <label for="inputMilheiro">Milheiro</label>
+                    <input type ='number' name="milheiro" class="form-control" placeholder="Informe o valor do milheiro">
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label for="inputSocio">Pago á</label>
+                        <select name="socio" id="inputSocio" onchange="getSocio()" class="form-control">
+
+                            <option value="escolheSocio" id="inputSocio" selected>Informe quem recebeu o valor da venda</option>
+                            <option value="M">Marilza</option>
+                            <option value="J">Jacson</option>
+                
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label for="exampleInputEmail1">Informe a data da venda</label>
+                        <input type="date" class="form-control" id="exampleInputEmail1" placeholder="Insira seu emai aqui">
+                    </div>
+                </div>
+
+
+                
+                <div class="box-actions">
+                    <button type="button" onclick="venda.salvar()" id="btn1">Salvar</button>
+                    <button onclick="venda.cancelar()">Cancelar</button>
+                    <button onclick="venda.somar()">Listar Valores</button>
+                </div>
+         
+            </fieldset>
+        </form>
+
+
+
+
+
+
+        <!-- <div class="card">
+            
+            <div class="lineInput">
+                <label for="">Produto</label>
+                <input type="text" name="" id="produto" placeholder="Nome do produto">
+
+            </div>
+
+            <div class="lineInput">
+                <label for="">Preço</label>
+                <input type="number" name="" id="preco" placeholder="Valor do produto">
+
+            </div>
+
+            <button onclick="produto.salvar()" id="btn1">Salvar</button>
+            <button onclick="produto.cancelar()">Cancelar</button>
+            <button onclick="produto.somar()">Listar Valores</button>
+        </div> -->
+
+
+
+        <div class="content">
+            <table border="1">
+                <thead>
+                    <th class="center">Cliente</th>
+                    <th class="center">Quantidade</th>
+                    <th class="center">Produto</th>
+                    <th class="center">Milheiro</th>
+                    <th class="center">Pago á</th>
+                    <th class="center">Valor venda</th>
+                    <th class="center">Editar / Deletar</th>
+                </thead>
+                <tbody id="tbody">
+                    
+
+                    
+                </tbody>
+            </table>
+            <p id="valorTotal"></p>
+
+        </div>
+    </main>
+</body>
+
+
+<script src="js/script.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+
+<script src="js/script.js"></script>
+
+
+</html>
