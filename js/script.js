@@ -10,6 +10,10 @@ class Venda{
         
     }
 
+ 
+
+
+
     salvar(){
        let venda =  this.lerDados()
 
@@ -21,14 +25,16 @@ class Venda{
     //         }
     //    }
 
-        console.log(venda)
+        
         this.adicionar(venda)
     
-       //this.listaTabela();
-       //this.cancelar()
+        this.listaTabela();
+        //this.cancelar()
+
+       console.log(this.arreyVendas)
        
 
-       document.getElementById("inputCliente").focus()
+       //document.getElementById("inputCliente").focus()
        
     }
 
@@ -47,7 +53,7 @@ class Venda{
         //console.log(total)
         this.total = total
 
-        console.log(this.total.toFixed(2))
+        //console.log(this.total.toFixed(2))
         document.getElementById("valorTotal").innerText = this.total;
     }
 
@@ -56,31 +62,43 @@ class Venda{
         let tbody = document.getElementById('tbody')
         tbody.innerText = '';
 
-        for(let i = 0; i< this.arreyProdutos.length; i++){
+        for(let i = 0; i< this.arreyVendas.length; i++){
             let tr = tbody.insertRow()
 
             let td_id = tr.insertCell()
+            let td_cliente = tr.insertCell()
+            let td_quantidade = tr.insertCell()
             let td_produto = tr.insertCell()
-            let td_valor = tr.insertCell()
+            let td_milheiro = tr.insertCell()
+            let td_socio = tr.insertCell()
             let td_acoes = tr.insertCell()
+            //let td_data = tr.insertCell()
 
-            td_id.innerText = this.arreyProdutos[i].id
-            td_produto.innerText = this.arreyProdutos[i].nomeProduto
-            td_valor.innerText = this.arreyProdutos[i].preco
+            td_id.innerText = this.arreyVendas[i].id
+            td_cliente.innerText = this.arreyVendas[i].nomeCliente
+            td_quantidade.innerText = this.arreyVendas[i].quantidade
+            td_produto.innerText = this.arreyVendas[i].produto
+            td_milheiro.innerText = this.arreyVendas[i].milheiro
+            td_socio.innerText = this.arreyVendas[i].socio
            
 
             td_id.classList.add("center")
+            td_cliente.classList.add("center")
+            td_quantidade.classList.add("center")
             td_produto.classList.add("center")
-            td_valor.classList.add("center", "info-valor")
+            td_milheiro.classList.add("center")
+            td_socio.classList.add("center")
             td_acoes.classList.add("center")
+            //td_valor.classList.add("center", "info-valor")
+            
 
             let imgEdit = document.createElement('img')
             imgEdit.src = 'img/editar.png';
-            imgEdit.setAttribute('onclick' , 'produto.preparaEditar(' + JSON.stringify(this.arreyProdutos[i]) + ')')
+            imgEdit.setAttribute('onclick' , 'produto.preparaEditar(' + JSON.stringify(this.arreyVendas[i]) + ')')
 
             let imgDelete = document.createElement('img');
             imgDelete.src = 'img/deletar.png'
-            imgDelete.setAttribute('onclick', 'produto.deletar('+ this.arreyProdutos[i].id +')')
+            imgDelete.setAttribute('onclick', 'produto.deletar('+ this.arreyVendass[i].id +')')
 
             td_acoes.appendChild(imgEdit)
             td_acoes.appendChild(imgDelete)
@@ -104,10 +122,10 @@ class Venda{
 
 
     atualizar(id, prduto){
-        for(let i = 0 ; i< this.arreyProdutos.length; i++){
-            if(this.arreyProdutos[i].id == id){
-                this.arreyProdutos[i].nomeProduto = prduto.nomeProduto
-                this.arreyProdutos[i].preco = prduto.preco
+        for(let i = 0 ; i< this.arreyarreyVendas.length; i++){
+            if(this.arreyarreyVendas[i].id == id){
+                this.arreyarreyVendas[i].nomeProduto = prduto.nomeProduto
+                this.arreyarreyVendas[i].preco = prduto.preco
             }
 
 
@@ -130,11 +148,11 @@ class Venda{
         venda.id = this.id
         venda.nomeCliente = document.getElementById("inputCliente").value;
         venda.quantidade = document.getElementById("inputQuantidade").value;
-        //venda.produto = getTipo();
-        venda.milheiro = document.getElementById("inputMilheiro");
-        //venda.socio = getSocio();
+        venda.produto = this.getTipo();
+        venda.milheiro = document.getElementById("inputMilheiro").value;
+        venda.socio = this.getSocio();
 
-        //console.log(venda.socio)
+        console.log(venda.socio)
         //produto.preco = document.getElementById("preco").value
         
         
@@ -144,24 +162,24 @@ class Venda{
         
     }
 
-    validaCampos(produto){
-        let msg = '';
+    // validaCampos(produto){
+    //     let msg = '';
 
-        if(produto.nomeProduto == '' ){
-            msg += 'Informe o nome do produto \n'
-        }
+    //     if(produto.nomeProduto == '' ){
+    //         msg += 'Informe o nome do produto \n'
+    //     }
 
-        if(produto.preco == '' ){
-            msg += 'Informe o preço do produto \n'
-        }
+    //     if(produto.preco == '' ){
+    //         msg += 'Informe o preço do produto \n'
+    //     }
 
-        if(msg != ''){
-            alert(msg)
-            return false
-        }
+    //     if(msg != ''){
+    //         alert(msg)
+    //         return false
+    //     }
 
-        return true;
-    }
+    //     return true;
+    // }
 
     cancelar(){
         document.getElementById("produto").value = '';
@@ -187,7 +205,21 @@ class Venda{
         
     }
     
-  
+    getTipo(){
+        let inputSelect = document.getElementById('inputProduto')
+        let op = inputSelect.options[inputSelect.selectedIndex].text;
+        
+        return op;
+        
+    }
+
+    getSocio(){
+        let inputSelect = document.getElementById('inputSocio')
+        let op = inputSelect.options[inputSelect.selectedIndex].text;
+        
+        return op;
+        
+    }
 
 
     
@@ -197,11 +229,4 @@ class Venda{
 var venda = new Venda();
 
 
-function getSocio(){
-    let inputSelect = document.getElementById('inputSocio')
-    let op = inputSelect.options[inputSelect.selectedIndex].text;
-    
-    return op;
-    
-}
 

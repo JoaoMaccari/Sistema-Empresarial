@@ -54,8 +54,8 @@
 
                     <div class="form-group col-lg-4">
                         <label for="inputProduto">Produto</label>
-                        <select class="form-control" onchange="getTipo()">
-                            <option value="escolha" id="inputProduto" name="produto" selected>Insira o produto</option>
+                        <select class="form-control" id="inputProduto"  name="produto" onchange="venda.getTipo()">
+                            <option value="escolha"  selected>Insira o produto</option>
                             <option value="t6s">Tijolo 6 Furos solto</option>
                             <option value="t6p">Tijolo 6 Furos paletizado</option>
                             <option value="t8s">Tijolo 8 Furos solto</option>
@@ -71,13 +71,13 @@
                 <div class="row">
                     <div class="form-group col-lg-4">
                         <label for="inputMilheiro">Milheiro</label>
-                    <input type ='number' name="milheiro" class="form-control" placeholder="Informe o valor do milheiro">
+                    <input type ='number' name="milheiro" id="inputMilheiro" class="form-control" placeholder="Informe o valor do milheiro">
                     </div>
                     <div class="form-group col-lg-4">
                         <label for="inputSocio">Pago á</label>
-                        <select name="socio" id="inputSocio" onchange="getSocio()" class="form-control">
+                        <select name="socio" id="inputSocio" onchange="venda.getSocio()" class="form-control">
 
-                            <option value="escolheSocio" id="inputSocio" selected>Informe quem recebeu o valor da venda</option>
+                            <option value="escolheSocio" selected>Informe quem recebeu o valor da venda</option>
                             <option value="M">Marilza</option>
                             <option value="J">Jacson</option>
                 
@@ -129,6 +129,7 @@
         <div class="content">
             <table border="1">
                 <thead>
+                    <th class="center">ID</th>
                     <th class="center">Cliente</th>
                     <th class="center">Quantidade</th>
                     <th class="center">Produto</th>
