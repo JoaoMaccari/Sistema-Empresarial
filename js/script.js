@@ -10,26 +10,22 @@ class Venda{
         
     }
 
- 
-
-
-
     salvar(){
        let venda =  this.lerDados()
 
-    //    if(this.validaCampos(venda)){
-    //         if(this.editId == null){
-    //             this.adicionar(venda)
-    //         }else{
-    //             this.atualizar(this.editId, venda)
-    //         }
-    //    }
+       if(this.validaCampos(venda) == true){
+            if(this.editId == null){
+                this.adicionar(venda)
+            }else{
+                this.atualizar(this.editId, venda)
+            }
+       }
 
         
-        this.adicionar(venda)
+        
     
         this.listaTabela();
-        //this.cancelar()
+        this.cancelar()
 
        console.log(this.arreyVendas)
        
@@ -50,7 +46,7 @@ class Venda{
             
         }
 
-        //console.log(total)
+        
         this.total = total
 
         //console.log(this.total.toFixed(2))
@@ -94,11 +90,11 @@ class Venda{
 
             let imgEdit = document.createElement('img')
             imgEdit.src = 'img/editar.png';
-            imgEdit.setAttribute('onclick' , 'produto.preparaEditar(' + JSON.stringify(this.arreyVendas[i]) + ')')
+            imgEdit.setAttribute('onclick' , 'venda.preparaEditar(' + JSON.stringify(this.arreyVendas[i]) + ')')
 
             let imgDelete = document.createElement('img');
             imgDelete.src = 'img/deletar.png'
-            imgDelete.setAttribute('onclick', 'produto.deletar('+ this.arreyVendass[i].id +')')
+            imgDelete.setAttribute('onclick', 'venda.deletar('+ this.arreyVendas[i].id +')')
 
             td_acoes.appendChild(imgEdit)
             td_acoes.appendChild(imgDelete)
@@ -121,11 +117,14 @@ class Venda{
 
 
 
-    atualizar(id, prduto){
-        for(let i = 0 ; i< this.arreyarreyVendas.length; i++){
-            if(this.arreyarreyVendas[i].id == id){
-                this.arreyarreyVendas[i].nomeProduto = prduto.nomeProduto
-                this.arreyarreyVendas[i].preco = prduto.preco
+    atualizar(id, venda){
+        for(let i = 0 ; i< this.arreyVendas.length; i++){
+            if(this.arreyVendas[i].id == id){
+                this.arreyVendas[i].nomeCliente = venda.nomeCliente;
+                this.arreyVendas[i].quantidade = venda.quantidade;
+                this.arreyVendas[i].produto = venda.produto;
+                this.arreyVendas[i].milheiro = venda.milheiro;
+                this.arreyVendas[i].socio = venda.socio;
             }
 
 
@@ -136,8 +135,15 @@ class Venda{
 
         this.editId = dados.id
 
-        document.getElementById('produto').value = dados.nomeProduto
-        document.getElementById('preco').value = dados.preco
+        console.log(dados)
+
+        document.getElementById('inputCliente').value = dados.nomeCliente;
+        document.getElementById('inputQuantidade').value = dados.quantidade;
+        document.getElementById("inputProduto").value = dados.produto;
+        document.getElementById("inputMilheiro").value = dados.milheiro;
+        document.getElementById("inputSocio").value = dados.socio
+
+
         document.getElementById('btn1').innerText = "Atualizar"
     }
 
@@ -152,7 +158,7 @@ class Venda{
         venda.milheiro = document.getElementById("inputMilheiro").value;
         venda.socio = this.getSocio();
 
-        console.log(venda.socio)
+       
         //produto.preco = document.getElementById("preco").value
         
         
@@ -162,30 +168,40 @@ class Venda{
         
     }
 
-    // validaCampos(produto){
-    //     let msg = '';
+    validaCampos(venda){
+        let msg = '';
 
-    //     if(produto.nomeProduto == '' ){
-    //         msg += 'Informe o nome do produto \n'
-    //     }
+        if(venda.nomeCliente == '' ){
+            msg += 'Informe o nome do cliente \n'
+        }
 
-    //     if(produto.preco == '' ){
-    //         msg += 'Informe o preço do produto \n'
-    //     }
+        if(venda.quantidade == '' ){
+            msg += 'Informe a quantidade \n'
+        }
 
-    //     if(msg != ''){
-    //         alert(msg)
-    //         return false
-    //     }
+        // if(venda.produto != 'Tijolo 6 Furos solto' || venda.produto.text != 'Tijolo 6 Furos paletizado' || venda.produto.text != 'Tijolo 8 Furos paletizado' || venda.produto.text != 'Tijolo 8 Furos solto' || venda.produto.text != 'Tijolo 9 Furos solto' || venda.produto.text != 'Tijolo 9 Guros paletizado' || venda.produto.text != 'Tavela' ){
+        //     msg += 'Informe o produto \n'
+        // }
 
-    //     return true;
-    // }
+        if(msg != ''){
+            alert(msg)
+            return false
+        }
+
+        return true;
+    }
 
     cancelar(){
-        document.getElementById("produto").value = '';
-        document.getElementById("preco").value = '';
 
+        document.getElementById('inputCliente').value = '';
+        document.getElementById('inputQuantidade').value =  '';
+        document.getElementById("inputProduto").value = '';
+        document.getElementById("inputMilheiro").value = '';
+        //document.getElementById("inputSocio").value = '';
+
+       
         document.getElementById("btn1").innerText = "Salvar"
+        
         this.editId = null
     }
 
@@ -209,6 +225,7 @@ class Venda{
         let inputSelect = document.getElementById('inputProduto')
         let op = inputSelect.options[inputSelect.selectedIndex].text;
         
+        console.log(op, typeof(op))
         return op;
         
     }
