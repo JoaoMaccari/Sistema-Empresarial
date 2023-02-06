@@ -26,12 +26,12 @@
 </head>
 <body>
 
-    <header>
+    <header id="header">
         <h1>Minhas vendas</h1>
     </header>
 
     <main>
-        <div class="tittle">
+        <div class="tittle" id="tittle">
             <h2>Produtos</h2>
             <span>Lista de vendas</span>
 
@@ -40,7 +40,7 @@
 
 
 
-        <form role="form" class="card" name="form">
+        <form role="form" class="card" name="form" id="form">
             <fieldset>
                 <div class="row">
                     <div class="form-group col-lg-4 ">
@@ -94,7 +94,7 @@
                 <div class="box-actions">
                     <button type="button" onclick="venda.salvar()" id="btn1">Salvar</button>
                     <button onclick="venda.cancelar()">Cancelar</button>
-                    <button type="button" onclick="venda.somar()">Listar Valores</button>
+                    <button type="button" onclick="venda.listarValores()">Listar Valores</button>
                 </div>
          
             </fieldset>
@@ -102,7 +102,7 @@
 
 
         <div class="content">
-            <table border="1">
+            <table border="1" class="table table-bordered">
                 <thead>
                     <th class="center">ID</th>
                     <th class="center">Cliente</th>
@@ -119,10 +119,45 @@
                     
                 </tbody>
             </table>
-            <p id="valorTotal"></p>
-            <p id="valorTotalVendas"></p>
+            
 
         </div>
+
+
+
+
+        <div class="col-5 resultados" id="resultados">
+            <div class="input-group mb-3">
+                <span class="input-group-text" >Total</span>
+                <input type="number" class="form-control" id="Total" name="Total" >
+            </div>
+            <!-- <div class="input-group mb-3">
+                <span class="input-group-text" >Divisão</span>
+                <input type="number" class="form-control text-end" id="divisao" name="divisao">
+            </div> -->
+            <div class="input-group mb-3">
+                <span class="input-group-text" >total Tijolos</span>
+                <input type="text" class="form-control " id="qtTotalVendas" name="qtTotal" >
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" >total Tijolos 6 Furos</span>
+                <input type="number" class="form-control text-end" id="qtTotal6" name="qtTotal6" disabled="">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" >total Tijolos 8 Furos</span>
+                <input type="number" class="form-control text-end" id="qtTotal8" name="qtTotal8" disabled="">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" >total Tijolos 9 Furos</span>
+                <input type="number" class="form-control text-end" id="qtTotal9" name="qtTotal9" disabled="">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" >total Tavelas</span>
+                <input type="number" class="form-control text-end" id="qtTotaolTav" name="qtTotalTav" disabled="">
+            </div>
+
+
+    </div>
     </main>
 </body>
 

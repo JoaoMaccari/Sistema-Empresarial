@@ -26,34 +26,114 @@ class Venda{
             }
        }
 
-        
-        
-        //this.valor = this.valorVenda(venda.quantidade, venda.milheiro)
+       
+       
+        this.tot6Furos += this.soma6(venda)
+        this.tot8Furos += this.soma8(venda)
+        this.tot9Furos += this.soma9(venda)
+        this.tavela += this.somaT(venda)
 
+       
         this.listaTabela();
         this.cancelar()
 
-       console.log(this.arreyVendas)
+       //console.log(this.arreyVendas)
        
 
        //document.getElementById("inputCliente").focus()
        
     }
 
-    somar(){
+    listarValores(){
+        
+        this.valorTotalVendas += this.valorVendas();
+        this.totalProdutosVendidos += this.quantidadeProdutosVendidos();
 
-        this.tot6Furos = this.tot6F()
-        this.tot8Furos = this.tot8F()
-        this.tot9Furos = this.tot9F()
-        this.tavela = this.totTavela()
-        this.valorTotalVendas = this.valorVendas()
-        this.totalProdutosVendidos= this.quantidadeProdutosVendidos()
+        let cabecalho = document.getElementById("header")
+        cabecalho.classList.add("hiddenResult")
+
+        let titulo = document.getElementById('tittle');
+        titulo.classList.add('hiddenResult');
+
+        let form = document.getElementById('form');
+        form.classList.add('hiddenResult');
+
+        let results = document.getElementById('resultados');
+        results.classList.toggle("showResults");
 
        
 
         //console.log(this.total.toFixed(2))
-        document.getElementById("valorTotal").innerText = this.totalProdutosVendidos;
-        document.getElementById("valorTotalVendas").innerText = this.valorTotalVendas;
+        document.getElementById("Total").value =  this.valorTotalVendas;
+        document.getElementById("qtTotalVendas").value = this.totalProdutosVendidos;
+        document.getElementById("qtTotal6").value = this.tot6Furos;
+        document.getElementById("qtTotal8").value = this.tot8Furos;
+        document.getElementById("qtTotal9").value = this.tot9Furos;
+        document.getElementById("qtTotaolTav").value = this.tavela;
+
+       
+        console.log("total em dinheiro" + this.valorTotalVendas)
+        console.log("total produtos venditos " + this.totalProdutosVendidos)
+        console.log("total 6 furos " + this.tot6Furos)
+        console.log("total 8 furos " + this.tot8Furos)
+        console.log("total 9 furos " + this.tot9Furos)
+        console.log("total tavelas " + this.tavela)
+    }
+
+    soma6(venda){
+
+        let total = 0;
+        if(venda.produto == "Tijolo 6 Furos solto" || venda.produto == "Tijolo 6 Furos paletizado" ){
+            
+
+            let total6f = venda.quantidade
+            total += parseFloat(total6f);
+        }
+
+        return total;
+
+    }
+
+    soma8(venda){
+
+        let total = 0;
+        if(venda.produto == "Tijolo 8 Furos solto" || venda.produto == "Tijolo 8 Furos paletizado" ){
+            
+
+            let total8f = venda.quantidade
+            total += parseFloat(total8f);
+        }
+
+        return total;
+
+    }
+
+    soma9(venda){
+
+        let total = 0;
+        if(venda.produto == "Tijolo 9 Furos solto" || venda.produto == "Tijolo 9 Furos paletizado" ){
+            
+
+            let total9f = venda.quantidade
+            total += parseFloat(total9f);
+        }
+
+        return total;
+
+    }
+
+    somaT(venda){
+
+        let total = 0;
+        if(venda.produto == "Tavela" ){
+            
+
+            let totalTav = venda.quantidade
+            total += parseFloat(totalTav);
+        }
+
+        return total;
+
     }
 
     //lista os inputs na tabela
@@ -63,6 +143,7 @@ class Venda{
 
         for(let i = 0; i< this.arreyVendas.length; i++){
             let tr = tbody.insertRow();
+            
 
             let td_id = tr.insertCell();
             let td_cliente = tr.insertCell();
@@ -86,12 +167,13 @@ class Venda{
             td_id.classList.add("center");
             td_cliente.classList.add("center");
             td_quantidade.classList.add("center", 'info-quantidade');
-            td_produto.classList.add("center");
+            
+            td_produto.classList.add("center", 'info-produto');
             td_milheiro.classList.add("center");
             td_socio.classList.add("center");
             td_acoes.classList.add("center");
             td_valor.classList.add("center", 'info-valor');
-            //td_valor.classList.add("center", "info-valor")
+            
             
 
             let imgEdit = document.createElement('img');
@@ -105,8 +187,6 @@ class Venda{
             td_acoes.appendChild(imgEdit);
             td_acoes.appendChild(imgDelete);
 
-            
-
            //console.log(this.arreyProdutos)
             
         }
@@ -118,7 +198,6 @@ class Venda{
 
         this.arreyVendas.push(venda)
         this.id++
-        
     }
 
 
@@ -164,6 +243,7 @@ class Venda{
         venda.milheiro = document.getElementById("inputMilheiro").value;
         venda.socio = this.getSocio();
         venda.valor = this.valorVenda(venda.quantidade, venda.milheiro)
+        
 
        
         //produto.preco = document.getElementById("preco").value
@@ -291,9 +371,19 @@ class Venda{
 
     }
 
-    tot6F(){
+    tot6F(venda){
         
+        let total = 0;
+
+        let total6f = venda.quantidade
+        total += parseFloat(total6f);
+        
+
+        console.log(total)
+        return total
     }
+
+    
 }
 
 var venda = new Venda();

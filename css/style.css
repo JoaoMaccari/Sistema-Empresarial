@@ -87,3 +87,15 @@ table td img{
 .center{
     text-align: center;
 }
+
+.resultados{
+    display: none;
+}
+
+.hiddenResult{
+    display: none;
+}
+
+.showResults{
+    display: block;
+}
