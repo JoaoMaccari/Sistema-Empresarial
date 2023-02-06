@@ -53,16 +53,16 @@
                     </div>
 
                     <div class="form-group col-lg-4">
-                        <label for="inputProduto">Produto</label>
+                        <label for="inputProduto">Informe o produto</label>
                         <select class="form-control" id="inputProduto"  name="produto" onchange="venda.getTipo()">
-                            <option value="escolha"  selected>Insira o produto</option>
-                            <option value="t6s">Tijolo 6 Furos solto</option>
-                            <option value="t6p">Tijolo 6 Furos paletizado</option>
-                            <option value="t8s">Tijolo 8 Furos solto</option>
-                            <option value="t8p">Tijolo 8 Furos paletizado</option>
-                            <option value="t9s">Tijolo 9 Furos solto</option>
-                            <option value="t9p">Tijolo 9 Furos paletizado</option>
-                            <option value="tav">Tavela</option>
+                            <option id="firstOption" value="" data-default disabled selected></option>
+                            <option value="Tijolo 6 Furos solto">Tijolo 6 Furos solto</option>
+                            <option value="Tijolo 6 Furos paletizado">Tijolo 6 Furos paletizado</option>
+                            <option value="Tijolo 8 Furos solto">Tijolo 8 Furos solto</option>
+                            <option value="Tijolo 8 Furos paletizado">Tijolo 8 Furos paletizado</option>
+                            <option value="Tijolo 9 Furos solto">Tijolo 9 Furos solto</option>
+                            <option value="Tijolo 9 Furos paletizado">Tijolo 9 Furos paletizado</option>
+                            <option value="Tavela">Tavela</option>
                         </select>
                     </div>
 
@@ -77,9 +77,9 @@
                         <label for="inputSocio">Pago á</label>
                         <select name="socio" id="inputSocio" onchange="venda.getSocio()" class="form-control">
 
-                            <option value="escolheSocio" selected>Informe quem recebeu o valor da venda</option>
-                            <option value="M">Marilza</option>
-                            <option value="J">Jacson</option>
+                            <option value="" data-default disabled selected></option>
+                            <option value="Marilza">Marilza</option>
+                            <option value="Jacson">Jacson</option>
                 
                         </select>
                     </div>
@@ -94,36 +94,11 @@
                 <div class="box-actions">
                     <button type="button" onclick="venda.salvar()" id="btn1">Salvar</button>
                     <button onclick="venda.cancelar()">Cancelar</button>
-                    <button onclick="venda.somar()">Listar Valores</button>
+                    <button type="button" onclick="venda.somar()">Listar Valores</button>
                 </div>
          
             </fieldset>
         </form>
-
-
-
-
-
-
-        <!-- <div class="card">
-            
-            <div class="lineInput">
-                <label for="">Produto</label>
-                <input type="text" name="" id="produto" placeholder="Nome do produto">
-
-            </div>
-
-            <div class="lineInput">
-                <label for="">Preço</label>
-                <input type="number" name="" id="preco" placeholder="Valor do produto">
-
-            </div>
-
-            <button onclick="produto.salvar()" id="btn1">Salvar</button>
-            <button onclick="produto.cancelar()">Cancelar</button>
-            <button onclick="produto.somar()">Listar Valores</button>
-        </div> -->
-
 
 
         <div class="content">
@@ -145,6 +120,7 @@
                 </tbody>
             </table>
             <p id="valorTotal"></p>
+            <p id="valorTotalVendas"></p>
 
         </div>
     </main>

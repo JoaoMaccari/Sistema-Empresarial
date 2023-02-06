@@ -6,7 +6,12 @@ class Venda{
         this.id = 1;
         this.arreyVendas = [];
         this.editId = null;
-        this.total = 0;
+        this.totalProdutosVendidos = 0;
+        this.valorTotalVendas = 0;
+        this.tot6Furos = 0; 
+        this.tot8Furos = 0;
+        this.tot9Furos = 0;
+        this.tavela = 0;
         
     }
 
@@ -23,7 +28,8 @@ class Venda{
 
         
         
-    
+        //this.valor = this.valorVenda(venda.quantidade, venda.milheiro)
+
         this.listaTabela();
         this.cancelar()
 
@@ -36,68 +42,68 @@ class Venda{
 
     somar(){
 
-        let tdsValores = document.querySelectorAll('.info-valor');
-        let total = 0;
+        this.tot6Furos = this.tot6F()
+        this.tot8Furos = this.tot8F()
+        this.tot9Furos = this.tot9F()
+        this.tavela = this.totTavela()
+        this.valorTotalVendas = this.valorVendas()
+        this.totalProdutosVendidos= this.quantidadeProdutosVendidos()
 
-        for(let i = 0; i< tdsValores.length; i++){
-
-            let valor = parseFloat(tdsValores[i].textContent)
-            total = total + valor
-            
-        }
-
-        
-        this.total = total
+       
 
         //console.log(this.total.toFixed(2))
-        document.getElementById("valorTotal").innerText = this.total;
+        document.getElementById("valorTotal").innerText = this.totalProdutosVendidos;
+        document.getElementById("valorTotalVendas").innerText = this.valorTotalVendas;
     }
 
     //lista os inputs na tabela
     listaTabela(){
-        let tbody = document.getElementById('tbody')
+        let tbody = document.getElementById('tbody');
         tbody.innerText = '';
 
         for(let i = 0; i< this.arreyVendas.length; i++){
-            let tr = tbody.insertRow()
+            let tr = tbody.insertRow();
 
-            let td_id = tr.insertCell()
-            let td_cliente = tr.insertCell()
-            let td_quantidade = tr.insertCell()
-            let td_produto = tr.insertCell()
-            let td_milheiro = tr.insertCell()
-            let td_socio = tr.insertCell()
-            let td_acoes = tr.insertCell()
+            let td_id = tr.insertCell();
+            let td_cliente = tr.insertCell();
+            let td_quantidade = tr.insertCell();
+            let td_produto = tr.insertCell();
+            let td_milheiro = tr.insertCell();
+            let td_socio = tr.insertCell();
+            let td_valor = tr.insertCell();
+            let td_acoes = tr.insertCell();
             //let td_data = tr.insertCell()
 
-            td_id.innerText = this.arreyVendas[i].id
-            td_cliente.innerText = this.arreyVendas[i].nomeCliente
-            td_quantidade.innerText = this.arreyVendas[i].quantidade
-            td_produto.innerText = this.arreyVendas[i].produto
-            td_milheiro.innerText = this.arreyVendas[i].milheiro
-            td_socio.innerText = this.arreyVendas[i].socio
+            td_id.innerText = this.arreyVendas[i].id;
+            td_cliente.innerText = this.arreyVendas[i].nomeCliente;
+            td_quantidade.innerText = this.arreyVendas[i].quantidade;
+            td_produto.innerText = this.arreyVendas[i].produto;
+            td_milheiro.innerText = this.arreyVendas[i].milheiro;
+            td_socio.innerText = this.arreyVendas[i].socio;
+            td_valor.innerText = this.arreyVendas[i].valor;
            
 
-            td_id.classList.add("center")
-            td_cliente.classList.add("center")
-            td_quantidade.classList.add("center")
-            td_produto.classList.add("center")
-            td_milheiro.classList.add("center")
-            td_socio.classList.add("center")
-            td_acoes.classList.add("center")
+            td_id.classList.add("center");
+            td_cliente.classList.add("center");
+            td_quantidade.classList.add("center", 'info-quantidade');
+            td_produto.classList.add("center");
+            td_milheiro.classList.add("center");
+            td_socio.classList.add("center");
+            td_acoes.classList.add("center");
+            td_valor.classList.add("center", 'info-valor');
             //td_valor.classList.add("center", "info-valor")
             
 
-            let imgEdit = document.createElement('img')
+            let imgEdit = document.createElement('img');
             imgEdit.src = 'img/editar.png';
             imgEdit.setAttribute('onclick' , 'venda.preparaEditar(' + JSON.stringify(this.arreyVendas[i]) + ')')
 
             let imgDelete = document.createElement('img');
-            imgDelete.src = 'img/deletar.png'
-            imgDelete.setAttribute('onclick', 'venda.deletar('+ this.arreyVendas[i].id +')')
+            imgDelete.src = 'img/deletar.png';
+            imgDelete.setAttribute('onclick', 'venda.deletar('+ this.arreyVendas[i].id +')');
 
-            td_acoes.appendChild(imgEdit)
-            td_acoes.appendChild(imgDelete)
+            td_acoes.appendChild(imgEdit);
+            td_acoes.appendChild(imgDelete);
 
             
 
@@ -157,36 +163,48 @@ class Venda{
         venda.produto = this.getTipo();
         venda.milheiro = document.getElementById("inputMilheiro").value;
         venda.socio = this.getSocio();
+        venda.valor = this.valorVenda(venda.quantidade, venda.milheiro)
 
        
         //produto.preco = document.getElementById("preco").value
         
         
 
+        
         return venda
 
         
     }
 
     validaCampos(venda){
-        let msg = '';
 
-        if(venda.nomeCliente == '' ){
-            msg += 'Informe o nome do cliente \n'
-        }
+    //     console.log(venda.produto, typeof(venda.produto))
+    //     let msg = '';
 
-        if(venda.quantidade == '' ){
-            msg += 'Informe a quantidade \n'
-        }
+    //     if(venda.nomeCliente == '' ){
+    //         msg += 'Informe o nome do cliente \n'
+    //     }
 
-        // if(venda.produto != 'Tijolo 6 Furos solto' || venda.produto.text != 'Tijolo 6 Furos paletizado' || venda.produto.text != 'Tijolo 8 Furos paletizado' || venda.produto.text != 'Tijolo 8 Furos solto' || venda.produto.text != 'Tijolo 9 Furos solto' || venda.produto.text != 'Tijolo 9 Guros paletizado' || venda.produto.text != 'Tavela' ){
-        //     msg += 'Informe o produto \n'
-        // }
+    //     if(venda.quantidade == '' ){
+    //         msg += 'Informe a quantidade \n'
+    //     }
 
-        if(msg != ''){
-            alert(msg)
-            return false
-        }
+    //     if(venda.produto == '' ){
+    //         msg += 'informe o produto \n'
+    //     }
+
+    //    if(venda.milheiro == ''){
+    //         msg += 'informe o milheiro \n'
+    //    }
+
+    //    if(venda.socio == ''){
+    //         msg += 'informe quem recebeu a venda \n'
+    //    }
+
+    //     if(msg != ''){
+    //         alert(msg)
+    //         return false
+    //     }
 
         return true;
     }
@@ -195,9 +213,10 @@ class Venda{
 
         document.getElementById('inputCliente').value = '';
         document.getElementById('inputQuantidade').value =  '';
-        document.getElementById("inputProduto").value = '';
+        document.getElementById('inputProduto').value = ''; 
         document.getElementById("inputMilheiro").value = '';
-        //document.getElementById("inputSocio").value = '';
+        document.getElementById('inputSocio').value = '';
+        
 
        
         document.getElementById("btn1").innerText = "Salvar"
@@ -210,9 +229,9 @@ class Venda{
         if(confirm("Deseja deletar o ID " + id)){
             let tbody = document.getElementById('tbody')
 
-            for(let i = 0; i < this.arreyProdutos.length; i++){
-                if(this.arreyProdutos[i].id == id ){
-                    this.arreyProdutos.splice(i, 1);
+            for(let i = 0; i < this.arreyVendas.length; i++){
+                if(this.arreyVendas[i].id == id ){
+                    this.arreyVendas.splice(i, 1);
                     tbody.deleteRow(i)
                 }
             }
@@ -223,24 +242,58 @@ class Venda{
     
     getTipo(){
         let inputSelect = document.getElementById('inputProduto')
-        let op = inputSelect.options[inputSelect.selectedIndex].text;
+        let op = inputSelect.value;
         
-        console.log(op, typeof(op))
-        return op;
-        
+        return op;   
     }
 
     getSocio(){
         let inputSelect = document.getElementById('inputSocio')
-        let op = inputSelect.options[inputSelect.selectedIndex].text;
+        let op = inputSelect.value;
         
         return op;
-        
     }
 
 
-    
-    
+    quantidadeProdutosVendidos(){
+
+        let tdsQuantidade = document.querySelectorAll('.info-quantidade');
+        let total = 0;
+
+        for(let i = 0; i< tdsQuantidade.length; i++){
+
+            let valor = parseFloat(tdsQuantidade[i].textContent)
+            total = total + valor
+            
+        }
+
+        
+        return  total
+
+    }
+
+    valorVenda(q, m){
+        let valor = parseFloat( q * m)
+
+        return valor
+    }
+
+    valorVendas(){
+        let tdsValores = document.querySelectorAll('.info-valor');
+        let total = 0;
+
+        for(let i = 0; i< tdsValores.length; i++){
+            let valor = parseFloat(tdsValores[i].textContent);
+            total += valor;
+        }
+
+        return total;
+
+    }
+
+    tot6F(){
+        
+    }
 }
 
 var venda = new Venda();
