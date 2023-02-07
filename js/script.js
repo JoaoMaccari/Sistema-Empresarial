@@ -12,6 +12,8 @@ class Venda{
         this.tot8Furos = 0;
         this.tot9Furos = 0;
         this.tavela = 0;
+        this.totMarilza = 0;
+        this.totJacson = 0;
         
     }
 
@@ -24,16 +26,7 @@ class Venda{
             }else{
                 this.atualizar(this.editId, venda)
             }
-       }
-
-       
-       
-        this.tot6Furos += this.soma6()
-
-        console.log(this.tot6Furos)
-        this.tot8Furos += this.soma8(venda)
-        this.tot9Furos += this.soma9(venda)
-        this.tavela += this.somaT(venda)
+        }
 
        
         this.listaTabela(venda);
@@ -47,7 +40,16 @@ class Venda{
     }
 
     listarValores(){
-        
+
+
+
+        this.tot6Furos += this.soma6();
+        this.tot8Furos += this.soma8();
+        this.tot9Furos += this.soma9();
+        this.tavela += this.somaT();
+        this.totMarilza += this.somaM();
+        this.totJacson += this.somaJ();
+     
         this.valorTotalVendas += this.valorVendas();
         this.totalProdutosVendidos += this.quantidadeProdutosVendidos();
 
@@ -63,93 +65,149 @@ class Venda{
         let results = document.getElementById('resultados');
         results.classList.toggle("showResults");
 
+        let results2 = document.getElementById('resultados-2');
+        results2.classList.toggle('showResults')
+
        
 
         //console.log(this.total.toFixed(2))
-        document.getElementById("Total").value =  this.valorTotalVendas;
+        
         document.getElementById("qtTotalVendas").value = this.totalProdutosVendidos;
         document.getElementById("qtTotal6").value = this.tot6Furos;
         document.getElementById("qtTotal8").value = this.tot8Furos;
         document.getElementById("qtTotal9").value = this.tot9Furos;
         document.getElementById("qtTotaolTav").value = this.tavela;
 
+        document.getElementById("Total").value =  this.valorTotalVendas;
+        document.getElementById("totM").value = this.totMarilza;
+        document.getElementById("totJ").value = this.totJacson;
+        //document.getElementById("divisao").
+
        
-        console.log("total em dinheiro" + this.valorTotalVendas)
-        console.log("total produtos venditos " + this.totalProdutosVendidos)
-        console.log("total 6 furos " + this.tot6Furos)
-        console.log("total 8 furos " + this.tot8Furos)
-        console.log("total 9 furos " + this.tot9Furos)
-        console.log("total tavelas " + this.tavela)
+        console.log("total em dinheiro" + this.valorTotalVendas);
+        console.log("total produtos venditos " + this.totalProdutosVendidos);
+        console.log("total 6 furos " + this.tot6Furos);
+        console.log("total 8 furos " + this.tot8Furos);
+        console.log("total 9 furos " + this.tot9Furos);
+        console.log("total tavelas " + this.tavela);
+        console.log("total de vendas marilza " + this.totMarilza);
+        console.log("total de vendas jac " + this.totJacson);
 
 
     }
 
     soma6(){
-        let tdsQuantidade = document.querySelectorAll('.info-quantidade');
+        //let tdsQuantidade = document.querySelectorAll('.info-quantidade');
         let tdsValores6F = document.querySelectorAll('.t6f');
+        
         
         let total = 0;
 
-        for(let i = 0; i< tdsQuantidade.length; i++){
+        for(let i = 0; i< tdsValores6F.length; i++){
 
-            if(){
-                
-            }
-            let valor = parseFloat(tdsValoresF[i].textContent);
+        
+            let valor = parseFloat(tdsValores6F[i].textContent);
+            
+            total += valor;
+
+            
+        }
+
+        return total;
+
+    }
+
+    soma8(){
+
+        let tdsValores8F = document.querySelectorAll('.t8f');
+        
+        let total = 0;
+
+        for(let i = 0; i< tdsValores8F.length; i++){
+
+            let valor = parseFloat(tdsValores8F[i].textContent);
             total += valor;
         }
 
-        console.log(total)
+        
         return total;
 
     }
 
-    soma8(venda){
+    soma9(){
 
+        let tdsValores9F = document.querySelectorAll('.t9f');
+        
         let total = 0;
-        if(venda.produto == "Tijolo 8 Furos solto" || venda.produto == "Tijolo 8 Furos paletizado" ){
-            
 
-            let total8f = venda.quantidade
-            total += parseFloat(total8f);
+        for(let i = 0; i< tdsValores9F.length; i++){
+
+        
+            let valor = parseFloat(tdsValores9F[i].textContent);
+            total += valor;
+        }
+
+        
+        return total;
+
+    }
+
+    somaT(){
+
+        let tdsTav = document.querySelectorAll('.tav');
+        
+        let total = 0;
+
+        for(let i = 0; i< tdsTav.length; i++){
+
+        
+            let valor = parseFloat(tdsTav[i].textContent);
+            total += valor;
+        }
+
+        
+        return total;
+
+    }
+
+
+    somaM(){
+        let tdsMari = document.querySelectorAll('.mari');
+        
+        let total = 0;
+
+        for(let i = 0; i< tdsMari.length; i++){
+
+        
+            let valor = parseFloat(tdsMari[i].textContent);
+            total += valor;
         }
 
         return total;
-
     }
 
-    soma9(venda){
 
+    somaJ(){
+        let tdsJac = document.querySelectorAll('.jac');
+        
         let total = 0;
-        if(venda.produto == "Tijolo 9 Furos solto" || venda.produto == "Tijolo 9 Furos paletizado" ){
-            
 
-            let total9f = venda.quantidade
-            total += parseFloat(total9f);
+        for(let i = 0; i< tdsJac.length; i++){
+
+        
+            let valor = parseFloat(tdsJac[i].textContent);
+            total += valor;
         }
 
         return total;
-
     }
 
-    somaT(venda){
-
-        let total = 0;
-        if(venda.produto == "Tavela" ){
-            
-
-            let totalTav = venda.quantidade
-            total += parseFloat(totalTav);
-        }
-
-        return total;
-
-    }
+   
 
     
 
     //lista os inputs na tabela
-    listaTabela(venda){
+    listaTabela(){
         let tbody = document.getElementById('tbody');
         const vendas = document.querySelectorAll('.venda');
         tbody.innerText = '';
@@ -185,13 +243,13 @@ class Venda{
             
 
             if(this.arreyVendas[i].produto == "Tijolo 6 Furos solto" || this.arreyVendas[i].produto == "Tijolo 6 Furos paletizado"){
-                td_produto.classList.add('t6f')
+                td_quantidade.classList.add('t6f')
             }else if(this.arreyVendas[i].produto  == "Tijolo 8 Furos solto" || this.arreyVendas[i].produto == "Tijolo 8 Furos paletizado"){
-                td_produto.classList.add("t8f")
+                td_quantidade.classList.add("t8f")
             }else if(this.arreyVendas[i].produto == "Tijolo 9 Furos solto" || this.arreyVendas[i].produto == "Tijolo 9 Furos paletizado"){
-                td_produto.classList.add("t9f")
+                td_quantidade.classList.add("t9f")
             }else {
-                td_produto.classList.add("tav")
+                td_quantidade.classList.add("tav")
             }
         
 
@@ -200,9 +258,9 @@ class Venda{
 
             
             if(this.arreyVendas[i].socio == "Marilza"){
-                td_socio.classList.add("mari")
+                td_valor.classList.add("mari")
             }else{
-                td_socio.classList.add("Jac")
+                td_valor.classList.add("jac")
             }
 
             td_acoes.classList.add("center");
@@ -243,9 +301,8 @@ class Venda{
                 this.arreyVendas[i].produto = venda.produto;
                 this.arreyVendas[i].milheiro = venda.milheiro;
                 this.arreyVendas[i].socio = venda.socio;
-                this.arreyVendas[i].valor = venda.valor
-
-                
+                this.arreyVendas[i].valor = venda.valor;
+               
             }
 
 
@@ -280,6 +337,7 @@ class Venda{
         venda.socio = this.getSocio();
         venda.valor = this.valorVenda(venda.quantidade, venda.milheiro)
 
+   
         //produto.preco = document.getElementById("preco").value
         
         return venda
