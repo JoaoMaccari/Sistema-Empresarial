@@ -34,7 +34,7 @@ class Venda{
         this.tavela += this.somaT(venda)
 
        
-        this.listaTabela();
+        this.listaTabela(venda);
         this.cancelar()
 
        //console.log(this.arreyVendas)
@@ -78,6 +78,8 @@ class Venda{
         console.log("total 8 furos " + this.tot8Furos)
         console.log("total 9 furos " + this.tot9Furos)
         console.log("total tavelas " + this.tavela)
+
+
     }
 
     soma6(venda){
@@ -137,12 +139,13 @@ class Venda{
     }
 
     //lista os inputs na tabela
-    listaTabela(){
+    listaTabela(venda){
         let tbody = document.getElementById('tbody');
         tbody.innerText = '';
 
         for(let i = 0; i< this.arreyVendas.length; i++){
             let tr = tbody.insertRow();
+            tr.classList.add('venda')
             
 
             let td_id = tr.insertCell();
@@ -168,6 +171,8 @@ class Venda{
             td_cliente.classList.add("center");
             td_quantidade.classList.add("center", 'info-quantidade');
             
+         
+
             td_produto.classList.add("center", 'info-produto');
             td_milheiro.classList.add("center");
             td_socio.classList.add("center");
@@ -190,6 +195,23 @@ class Venda{
            //console.log(this.arreyProdutos)
             
         }
+
+        const vendas = document.querySelectorAll('.venda');
+
+        // for (let i = 0; i < vendas.length; i++) {
+
+        //     let venda = vendas[i]
+
+        //     let tdProduto = venda.querySelector('.info-produto').textContent;
+
+            
+        //     console.log(tdProduto)
+        //     if (tdProduto == "Tijolo 6 Furos solto") {    
+        //         tdProduto.classList.add('t6f')
+        //     } 
+
+        // }
+
     }
 
     adicionar(venda){
@@ -210,6 +232,9 @@ class Venda{
                 this.arreyVendas[i].produto = venda.produto;
                 this.arreyVendas[i].milheiro = venda.milheiro;
                 this.arreyVendas[i].socio = venda.socio;
+                this.arreyVendas[i].valor = venda.valor
+
+                
             }
 
 
@@ -369,18 +394,6 @@ class Venda{
 
         return total;
 
-    }
-
-    tot6F(venda){
-        
-        let total = 0;
-
-        let total6f = venda.quantidade
-        total += parseFloat(total6f);
-        
-
-        console.log(total)
-        return total
     }
 
     
