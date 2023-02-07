@@ -28,7 +28,9 @@ class Venda{
 
        
        
-        this.tot6Furos += this.soma6(venda)
+        this.tot6Furos += this.soma6()
+
+        console.log(this.tot6Furos)
         this.tot8Furos += this.soma8(venda)
         this.tot9Furos += this.soma9(venda)
         this.tavela += this.somaT(venda)
@@ -82,16 +84,22 @@ class Venda{
 
     }
 
-    soma6(venda){
-
+    soma6(){
+        let tdsQuantidade = document.querySelectorAll('.info-quantidade');
+        let tdsValores6F = document.querySelectorAll('.t6f');
+        
         let total = 0;
-        if(venda.produto == "Tijolo 6 Furos solto" || venda.produto == "Tijolo 6 Furos paletizado" ){
-            
 
-            let total6f = venda.quantidade
-            total += parseFloat(total6f);
+        for(let i = 0; i< tdsQuantidade.length; i++){
+
+            if(){
+                
+            }
+            let valor = parseFloat(tdsValoresF[i].textContent);
+            total += valor;
         }
 
+        console.log(total)
         return total;
 
     }
@@ -138,9 +146,12 @@ class Venda{
 
     }
 
+    
+
     //lista os inputs na tabela
     listaTabela(venda){
         let tbody = document.getElementById('tbody');
+        const vendas = document.querySelectorAll('.venda');
         tbody.innerText = '';
 
         for(let i = 0; i< this.arreyVendas.length; i++){
@@ -170,12 +181,30 @@ class Venda{
             td_id.classList.add("center");
             td_cliente.classList.add("center");
             td_quantidade.classList.add("center", 'info-quantidade');
-            
-         
-
             td_produto.classList.add("center", 'info-produto');
+            
+
+            if(this.arreyVendas[i].produto == "Tijolo 6 Furos solto" || this.arreyVendas[i].produto == "Tijolo 6 Furos paletizado"){
+                td_produto.classList.add('t6f')
+            }else if(this.arreyVendas[i].produto  == "Tijolo 8 Furos solto" || this.arreyVendas[i].produto == "Tijolo 8 Furos paletizado"){
+                td_produto.classList.add("t8f")
+            }else if(this.arreyVendas[i].produto == "Tijolo 9 Furos solto" || this.arreyVendas[i].produto == "Tijolo 9 Furos paletizado"){
+                td_produto.classList.add("t9f")
+            }else {
+                td_produto.classList.add("tav")
+            }
+        
+
             td_milheiro.classList.add("center");
             td_socio.classList.add("center");
+
+            
+            if(this.arreyVendas[i].socio == "Marilza"){
+                td_socio.classList.add("mari")
+            }else{
+                td_socio.classList.add("Jac")
+            }
+
             td_acoes.classList.add("center");
             td_valor.classList.add("center", 'info-valor');
             
@@ -192,37 +221,19 @@ class Venda{
             td_acoes.appendChild(imgEdit);
             td_acoes.appendChild(imgDelete);
 
+           
+
            //console.log(this.arreyProdutos)
             
         }
 
-        const vendas = document.querySelectorAll('.venda');
-
-        // for (let i = 0; i < vendas.length; i++) {
-
-        //     let venda = vendas[i]
-
-        //     let tdProduto = venda.querySelector('.info-produto').textContent;
-
-            
-        //     console.log(tdProduto)
-        //     if (tdProduto == "Tijolo 6 Furos solto") {    
-        //         tdProduto.classList.add('t6f')
-        //     } 
-
-        // }
-
     }
 
     adicionar(venda){
-        //produto.preco = parseFloat(produto.preco);
-
-
+       
         this.arreyVendas.push(venda)
         this.id++
     }
-
-
 
     atualizar(id, venda){
         for(let i = 0 ; i< this.arreyVendas.length; i++){
@@ -268,17 +279,11 @@ class Venda{
         venda.milheiro = document.getElementById("inputMilheiro").value;
         venda.socio = this.getSocio();
         venda.valor = this.valorVenda(venda.quantidade, venda.milheiro)
-        
 
-       
         //produto.preco = document.getElementById("preco").value
-        
-        
-
         
         return venda
 
-        
     }
 
     validaCampos(venda){
