@@ -35,7 +35,7 @@ class Venda{
        //console.log(this.arreyVendas)
        
 
-       //document.getElementById("inputCliente").focus()
+       document.getElementById("inputCliente").focus()
        
     }
 
@@ -209,7 +209,6 @@ class Venda{
     //lista os inputs na tabela
     listaTabela(){
         let tbody = document.getElementById('tbody');
-        const vendas = document.querySelectorAll('.venda');
         tbody.innerText = '';
 
         for(let i = 0; i< this.arreyVendas.length; i++){
@@ -331,11 +330,22 @@ class Venda{
         
         venda.id = this.id
         venda.nomeCliente = document.getElementById("inputCliente").value;
-        venda.quantidade = document.getElementById("inputQuantidade").value;
+        
+        let inputQuantidade = document.getElementById("inputQuantidade").value;
+        let $inputQuantidade = parseFloat(inputQuantidade).toFixed(3)
+    
+        //console.log($inputQuantidade, typeof($inputQuantidade));
+        venda.quantidade = ($inputQuantidade);
+        
+
         venda.produto = this.getTipo();
-        venda.milheiro = document.getElementById("inputMilheiro").value;
+
+        let inputMilheiro = document.getElementById("inputMilheiro").value;
+        let $inputMilheiro = parseFloat(inputMilheiro)
+        venda.milheiro = ($inputMilheiro);
+
         venda.socio = this.getSocio();
-        venda.valor = this.valorVenda(venda.quantidade, venda.milheiro)
+        venda.valor = parseFloat(this.valorVenda(venda.quantidade, venda.milheiro))
 
    
         //produto.preco = document.getElementById("preco").value
