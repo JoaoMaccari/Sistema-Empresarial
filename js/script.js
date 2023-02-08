@@ -72,15 +72,15 @@ class Venda{
 
         //console.log(this.total.toFixed(2))
         
-        document.getElementById("qtTotalVendas").value = this.totalProdutosVendidos;
-        document.getElementById("qtTotal6").value = this.tot6Furos;
-        document.getElementById("qtTotal8").value = this.tot8Furos;
-        document.getElementById("qtTotal9").value = this.tot9Furos;
-        document.getElementById("qtTotaolTav").value = this.tavela;
+        document.getElementById("qtTotalVendas").value = this.totalProdutosVendidos.toLocaleString('pt-BR');
+        document.getElementById("qtTotal6").value = this.tot6Furos.toLocaleString('pt-BR');
+        document.getElementById("qtTotal8").value = this.tot8Furos.toLocaleString('pt-BR');
+        document.getElementById("qtTotal9").value = this.tot9Furos.toLocaleString('pt-BR');
+        document.getElementById("qtTotaolTav").value = this.tavela.toLocaleString('pt-BR');
 
-        document.getElementById("Total").value =  this.valorTotalVendas;
-        document.getElementById("totM").value = this.totMarilza;
-        document.getElementById("totJ").value = this.totJacson;
+        document.getElementById("Total").value = this.valorTotalVendas.toLocaleString('pt-BR', {style : "currency", currency: 'BRL'} );
+        document.getElementById("totM").value = this.totMarilza.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+        document.getElementById("totJ").value = this.totJacson.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
         //document.getElementById("divisao").
 
        
