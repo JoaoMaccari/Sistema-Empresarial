@@ -72,11 +72,11 @@ class Venda{
 
         //console.log(this.total.toFixed(2))
         
-        document.getElementById("qtTotalVendas").value = this.totalProdutosVendidos.toLocaleString('pt-BR');
-        document.getElementById("qtTotal6").value = this.tot6Furos.toLocaleString('pt-BR');
-        document.getElementById("qtTotal8").value = this.tot8Furos.toLocaleString('pt-BR');
-        document.getElementById("qtTotal9").value = this.tot9Furos.toLocaleString('pt-BR');
-        document.getElementById("qtTotaolTav").value = this.tavela.toLocaleString('pt-BR');
+        document.getElementById("qtTotalVendas").value = this.totalProdutosVendidos.toFixed(3).toLocaleString('pt-BR');
+        document.getElementById("qtTotal6").value = this.tot6Furos.toFixed(3).toLocaleString('pt-BR');
+        document.getElementById("qtTotal8").value = this.tot8Furos.toFixed(3).toLocaleString('pt-BR');
+        document.getElementById("qtTotal9").value = this.tot9Furos.toFixed(3).toLocaleString('pt-BR');
+        document.getElementById("qtTotaolTav").value = this.tavela.toFixed(3).toLocaleString('pt-BR');
 
         document.getElementById("Total").value = this.valorTotalVendas.toLocaleString('pt-BR', {style : "currency", currency: 'BRL'} );
         document.getElementById("totM").value = this.totMarilza.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
@@ -84,14 +84,14 @@ class Venda{
         //document.getElementById("divisao").
 
        
-        console.log("total em dinheiro" + this.valorTotalVendas);
-        console.log("total produtos venditos " + this.totalProdutosVendidos);
-        console.log("total 6 furos " + this.tot6Furos);
-        console.log("total 8 furos " + this.tot8Furos);
-        console.log("total 9 furos " + this.tot9Furos);
-        console.log("total tavelas " + this.tavela);
-        console.log("total de vendas marilza " + this.totMarilza);
-        console.log("total de vendas jac " + this.totJacson);
+        // console.log("total em dinheiro" + this.valorTotalVendas);
+        // console.log("total produtos venditos " + this.totalProdutosVendidos);
+        // console.log("total 6 furos " + this.tot6Furos);
+        // console.log("total 8 furos " + this.tot8Furos);
+        // console.log("total 9 furos " + this.tot9Furos);
+        // console.log("total tavelas " + this.tavela);
+        // console.log("total de vendas marilza " + this.totMarilza);
+        // console.log("total de vendas jac " + this.totJacson);
 
 
     }
@@ -333,19 +333,16 @@ class Venda{
         
         let inputQuantidade = document.getElementById("inputQuantidade").value;
         let $inputQuantidade = parseFloat(inputQuantidade).toFixed(3)
-    
-        //console.log($inputQuantidade, typeof($inputQuantidade));
         venda.quantidade = ($inputQuantidade);
         
-
         venda.produto = this.getTipo();
 
         let inputMilheiro = document.getElementById("inputMilheiro").value;
-        let $inputMilheiro = parseFloat(inputMilheiro)
+        let $inputMilheiro = parseFloat(inputMilheiro).toFixed(2)
         venda.milheiro = ($inputMilheiro);
 
         venda.socio = this.getSocio();
-        venda.valor = parseFloat(this.valorVenda(venda.quantidade, venda.milheiro))
+        venda.valor = parseFloat(this.valorVenda(venda.quantidade, venda.milheiro)).toFixed(2)
 
    
         //produto.preco = document.getElementById("preco").value
