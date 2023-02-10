@@ -68,6 +68,14 @@ class Venda{
         let results2 = document.getElementById('resultados-2');
         results2.classList.toggle('showResults')
 
+        // let containerResultados = document.getElementsByClassName('container-resultados')
+        // let btn = document.createElement('button');
+        // btn.type = 'button'
+        // btn.innerText = "Imprimir"
+        // btn.setAttribute('onclick', 'window.print()')
+        // containerResultados[0].appendChild(btn)
+
+
        
 
         //console.log(this.total.toFixed(2))
@@ -82,6 +90,7 @@ class Venda{
         document.getElementById("totM").value = this.totMarilza.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
         document.getElementById("totJ").value = this.totJacson.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
         //document.getElementById("divisao").
+
 
        
         // console.log("total em dinheiro" + this.valorTotalVendas);
