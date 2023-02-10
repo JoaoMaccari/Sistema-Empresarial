@@ -1,11 +1,15 @@
 
 
+
+
 class Venda{
 
+   
+    
     constructor(){
         this.id = 1;
         this.arreyVendas = [];
-        this.editId = null;
+        this.editId = null; 
         this.totalProdutosVendidos = 0;
         this.valorTotalVendas = 0;
         this.tot6Furos = 0; 
@@ -16,7 +20,7 @@ class Venda{
         this.totJacson = 0;
         
     }
-
+    
     salvar(){
        let venda =  this.lerDados()
 
@@ -340,9 +344,9 @@ class Venda{
         venda.id = this.id
         venda.nomeCliente = document.getElementById("inputCliente").value;
         
-        let inputQuantidade = document.getElementById("inputQuantidade").value;
-        let $inputQuantidade = parseFloat(inputQuantidade).toFixed(3)
-        venda.quantidade = ($inputQuantidade);
+        
+        venda.quantidade = this.input
+        console.log(venda.quantidade)
         
         venda.produto = this.getTipo();
 
@@ -478,7 +482,10 @@ class Venda{
     
 }
 
+
+
+
+
+
+
 var venda = new Venda();
-
-
-
