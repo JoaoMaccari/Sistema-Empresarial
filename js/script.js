@@ -1,12 +1,7 @@
 
-
-
-
 class Venda{
 
-   
-    
-    constructor(){
+    constructor(inputQt){
         this.id = 1;
         this.arreyVendas = [];
         this.editId = null; 
@@ -18,10 +13,15 @@ class Venda{
         this.tavela = 0;
         this.totMarilza = 0;
         this.totJacson = 0;
+
+        this.input = inputQt
         
     }
     
     salvar(){
+
+
+
        let venda =  this.lerDados()
 
        if(this.validaCampos(venda) == true){
@@ -344,7 +344,7 @@ class Venda{
         venda.id = this.id
         venda.nomeCliente = document.getElementById("inputCliente").value;
         
-        
+    
         venda.quantidade = this.input
         console.log(venda.quantidade)
         
@@ -357,8 +357,6 @@ class Venda{
         venda.socio = this.getSocio();
         venda.valor = parseFloat(this.valorVenda(venda.quantidade, venda.milheiro)).toFixed(2)
 
-   
-        //produto.preco = document.getElementById("preco").value
         
         return venda
 
@@ -484,8 +482,29 @@ class Venda{
 
 
 
+let inputQt = document.getElementById('inputQuantidade')
+
+
+var numberMask = IMask(inputQt, {
+    mask: Number,  // enable number mask
+
+    // other options are optional with defaults below
+    scale: 2,  // digits after point, 0 for integers
+    signed: false,  // disallow negative
+    thousandsSeparator: '.',  // any single char
+    padFractionalZeros: false,  // if true, then pads zeros at end to the length of scale
+    normalizeZeros: true,  // appends or removes zeros at ends
+    radix: ',',  // fractional delimiter
+    mapToRadix: ['.'],  // symbols to process as radix
+
+    
+});
+
+let $inputQt = parseFloat(numberMask.value)
+
+
+var venda = new Venda(inputQt);
 
 
 
 
-var venda = new Venda();
