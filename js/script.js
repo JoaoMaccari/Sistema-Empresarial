@@ -1,7 +1,7 @@
 
 class Venda{
 
-    constructor(inputQt){
+    constructor(){
         this.id = 1;
         this.arreyVendas = [];
         this.editId = null; 
@@ -14,7 +14,7 @@ class Venda{
         this.totMarilza = 0;
         this.totJacson = 0;
 
-        this.input = inputQt
+      
         
     }
     
@@ -84,13 +84,13 @@ class Venda{
 
         //console.log(this.total.toFixed(2))
         
-        document.getElementById("qtTotalVendas").value = this.totalProdutosVendidos.toFixed(3).toLocaleString('pt-BR');
-        document.getElementById("qtTotal6").value = this.tot6Furos.toFixed(3).toLocaleString('pt-BR');
-        document.getElementById("qtTotal8").value = this.tot8Furos.toFixed(3).toLocaleString('pt-BR');
-        document.getElementById("qtTotal9").value = this.tot9Furos.toFixed(3).toLocaleString('pt-BR');
-        document.getElementById("qtTotaolTav").value = this.tavela.toFixed(3).toLocaleString('pt-BR');
+        document.getElementById("qtTotalVendas").value = this.totalProdutosVendidos.toFixed().toLocaleString('pt-BR');
+        document.getElementById("qtTotal6").value = this.tot6Furos.toFixed().toLocaleString('pt-BR');
+        document.getElementById("qtTotal8").value = this.tot8Furos.toFixed().toLocaleString('pt-BR');
+        document.getElementById("qtTotal9").value = this.tot9Furos.toFixed().toLocaleString('pt-BR');
+        document.getElementById("qtTotaolTav").value = this.tavela.toFixed().toLocaleString('pt-BR');
 
-        document.getElementById("Total").value = this.valorTotalVendas.toLocaleString('pt-BR', {style : "currency", currency: 'BRL'} );
+        document.getElementById("Total").value = this.valorTotalVendas.toLocaleString('pt-BR', {style : "currency", currency: 'BRL', } );
         document.getElementById("totM").value = this.totMarilza.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
         document.getElementById("totJ").value = this.totJacson.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
         //document.getElementById("divisao").
@@ -344,20 +344,17 @@ class Venda{
         venda.id = this.id
         venda.nomeCliente = document.getElementById("inputCliente").value;
         
-    
-        venda.quantidade = this.input
-        console.log(venda.quantidade)
-        
+        venda.quantidade = document.getElementById('inputQuantidade').value
+        let qt = Number(venda.quantidade)
         venda.produto = this.getTipo();
 
-        let inputMilheiro = document.getElementById("inputMilheiro").value;
-        let $inputMilheiro = parseFloat(inputMilheiro).toFixed(2)
-        venda.milheiro = ($inputMilheiro);
-
+        venda.milheiro = document.getElementById("inputMilheiro").value;
+       let m = Number(venda.milheiro)
         venda.socio = this.getSocio();
-        venda.valor = parseFloat(this.valorVenda(venda.quantidade, venda.milheiro)).toFixed(2)
 
-        
+        venda.valor = this.valorVenda(qt, m);
+
+       
         return venda
 
     }
@@ -459,8 +456,10 @@ class Venda{
     }
 
     valorVenda(q, m){
-        let valor = parseFloat( q * m)
+        let valor =  q + m
 
+        console.log(typeof(valor))
+        console.log(valor)
         return valor
     }
 
@@ -482,28 +481,17 @@ class Venda{
 
 
 
-let inputQt = document.getElementById('inputQuantidade')
+var venda = new Venda();
 
 
-var numberMask = IMask(inputQt, {
-    mask: Number,  // enable number mask
-
-    // other options are optional with defaults below
-    scale: 2,  // digits after point, 0 for integers
-    signed: false,  // disallow negative
-    thousandsSeparator: '.',  // any single char
-    padFractionalZeros: false,  // if true, then pads zeros at end to the length of scale
-    normalizeZeros: true,  // appends or removes zeros at ends
-    radix: ',',  // fractional delimiter
-    mapToRadix: ['.'],  // symbols to process as radix
-
-    
-});
-
-let $inputQt = parseFloat(numberMask.value)
 
 
-var venda = new Venda(inputQt);
+
+
+
+
+
+
 
 
 
