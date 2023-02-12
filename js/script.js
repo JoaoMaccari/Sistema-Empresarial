@@ -346,6 +346,13 @@ class Venda{
         
         venda.quantidade = document.getElementById('inputQuantidade').value
         let qt = Number(venda.quantidade)
+        
+
+        // let qt = document.getElementById('inputQuantidade').value
+        // console.log(qt)
+        
+        
+
         venda.produto = this.getTipo();
 
         venda.milheiro = document.getElementById("inputMilheiro").value;
@@ -456,10 +463,12 @@ class Venda{
     }
 
     valorVenda(q, m){
+        
         let valor =  q + m
 
         console.log(typeof(valor))
         console.log(valor)
+
         return valor
     }
 
