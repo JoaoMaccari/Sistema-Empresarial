@@ -341,8 +341,9 @@ class Venda{
         venda.nomeCliente = document.getElementById("inputCliente").value;
         
         let inputQuantidade = document.getElementById("inputQuantidade").value;
-        let $inputQuantidade = parseFloat(inputQuantidade).toFixed(3)
-        venda.quantidade = ($inputQuantidade);
+        
+        let $inputQuantidade = parseFloat(inputQuantidade)
+        venda.quantidade = $inputQuantidade;
         
         venda.produto = this.getTipo();
 
