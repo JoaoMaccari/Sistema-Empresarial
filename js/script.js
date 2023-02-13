@@ -466,14 +466,14 @@ class Venda{
         } else if (q >= 1000 || q<= 1000){
             let valor = (q * m ) / 100
             return valor
+
+            console.log(typeof(valor))
+            console.log(valor)
+
         }
             
-            
-        
-        
 
-        console.log(typeof(valor))
-        console.log(valor)
+        
 
         
     }
