@@ -346,13 +346,7 @@ class Venda{
         
         venda.quantidade = document.getElementById('inputQuantidade').value
         let qt = Number(venda.quantidade)
-        
-
-        // let qt = document.getElementById('inputQuantidade').value
-        // console.log(qt)
-        
-        
-
+    
         venda.produto = this.getTipo();
 
         venda.milheiro = document.getElementById("inputMilheiro").value;
@@ -464,12 +458,24 @@ class Venda{
 
     valorVenda(q, m){
         
-        let valor =  q + m
+        if (q >= 10000){
+            let valor =  (q * m) / 1000
+
+            return valor
+
+        } else if (q >= 1000 || q<= 1000){
+            let valor = (q * m ) / 100
+            return valor
+        }
+            
+            
+        
+        
 
         console.log(typeof(valor))
         console.log(valor)
 
-        return valor
+        
     }
 
     valorVendas(){
