@@ -1,6 +1,6 @@
 function getData(){
     var date = document.getElementById('textData1').value
-    var date2 = document.getElementById('textData2').value
+    //var date2 = document.getElementById('textData2').value
     var periodo = document.getElementById('peri');
     
     console.log(date, typeof(date))
@@ -30,7 +30,7 @@ function getData(){
     
     
     let datas = document.getElementById('selectDatas')
-    datas.classList.add('hiddenResult')
+    //datas.classList.add('hiddenResult')
 
     periodo.innerHTML = month + ' A ' + date2
 
