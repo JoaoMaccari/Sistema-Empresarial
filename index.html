@@ -33,14 +33,28 @@
     </header>
 
     <main>
-        <div class="tittle" id="tittle">
-            
-            <span>Lista de vendas</span>
+    
+        <div class=" row calendario mb-4">
+            <div class="col-4" id="selectDatas">
+                <label for="txtData1" class="rotulo">Data inicio:</label>
+                <input type="date" id="textData1" name="data" class="caixa-texto">
+                <label for="txtData1" class="rotulo">Data final:</label>
+                <input type="date" id="textData2" name="data" class="caixa-texto">
+    
+                <button class="button" onclick="getData()">data</button><br>
+            </div>
 
+            <div class="col-4 mt-4">
+                <label for="periodo" id="" style="display: inline">Periodo:</label>
+                <div id="peri"> </div>
+            </div>
+            
+    
+           
         </div>
 
-
-
+      
+    
 
         <form role="form" class="card" name="form" id="form">
             <fieldset>
@@ -102,6 +116,12 @@
             </fieldset>
         </form>
 
+        <div class="tittle mt-4" id="tittle">
+            
+            <span>Lista de vendas</span>
+
+        </div>
+
 
         <div class="content">
             <table border="1" class="table table-bordered">
@@ -122,9 +142,7 @@
                 </tbody>
             </table>
 
-            <input id="inputTeste" type="text">
-            <button id="">teste</button>
-            
+          
 
         </div>
 
@@ -159,6 +177,10 @@
                     <input type="text" class="form-control text-end" id="Total" name="Total" >
                 </div>
                 <div class="input-group mb-3">
+                    <span class="input-group-text" >Divisão</span>
+                    <input type="text" class="form-control text-end" id="divisao" name="divisao" >
+                </div>
+                <div class="input-group mb-3">
                     <span class="input-group-text" >Total Marilza</span>
                     <input type="text" class="form-control text-end" id="totM" name="totM" >
                 </div>
@@ -166,11 +188,18 @@
                     <span class="input-group-text" >Total Jacson</span>
                     <input type="text" class="form-control text-end" id="totJ" name="totJ">
                 </div>
-                <!-- <div class="input-group mb-3">
-                    <span class="input-group-text" >Divisão</span>
-                    <input type="text" class="form-control text-end" id="divisao" name="divisao" >
-                </div> -->
-            
+
+                
+                <div class="input-group jacPagaOutput mb-3 " >
+                    <span class="input-group-text" >Jacson paga</span>
+                    <input type="text" class="form-control text-end" id="jacPaga" name="totJ">
+                </div>
+
+                <div class="input-group mariPagaOutput mb-3">
+                    <span class="input-group-text" >Marilza paga</span>
+                    <input type="text" class="form-control text-end" id="mariPaga" name="totJ">
+                </div>
+
             </div>
 
         </div>

@@ -74,7 +74,7 @@ table th{
 }
 
 table th, td{
-    
+   
     padding: 1px 5px;
     text-align: left;
 }
@@ -98,4 +98,9 @@ table td img{
 
 .showResults{
     display: block;
+}
+
+.container-resultados{
+    display: flex;
+    justify-content: center;
 }

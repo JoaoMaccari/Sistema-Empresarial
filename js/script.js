@@ -1,3 +1,41 @@
+function getData(){
+    var date = document.getElementById('textData1').value
+    var date2 = document.getElementById('textData2').value
+    var periodo = document.getElementById('peri');
+    
+    console.log(date, typeof(date))
+    let string = String (date)
+
+    console.log(typeof(string))
+
+    string.substring(3)
+
+    console.log(string)
+    
+    
+    
+
+
+
+    monName = new Array ("janeiro", "fevereiro", "março", "abril", "maio", "junho", "agosto", "outubro", "novembro", "dezembro")
+    
+   
+    const d = new Date()
+    let month = monName[d.getMonth()]
+    console.log(month)
+
+    
+
+    //console.log(date2.value) 
+    
+    
+    let datas = document.getElementById('selectDatas')
+    datas.classList.add('hiddenResult')
+
+    periodo.innerHTML = month + ' A ' + date2
+
+}
+
 
 class Venda{
 
@@ -13,6 +51,7 @@ class Venda{
         this.tavela = 0;
         this.totMarilza = 0;
         this.totJacson = 0;
+        this.divisao = 0;
 
       
         
@@ -90,9 +129,29 @@ class Venda{
         document.getElementById("qtTotal9").value = this.tot9Furos.toFixed().toLocaleString('pt-BR');
         document.getElementById("qtTotaolTav").value = this.tavela.toFixed().toLocaleString('pt-BR');
 
-        document.getElementById("Total").value = this.valorTotalVendas.toLocaleString('pt-BR', {style : "currency", currency: 'BRL', } );
+        document.getElementById("Total").value = this.valorTotalVendas.toLocaleString('pt-BR', {style : "currency", currency: 'BRL' } );
+
+        this.divisao = this.valorTotalVendas / 2
+        document.getElementById('divisao').value = this.divisao
         document.getElementById("totM").value = this.totMarilza.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
         document.getElementById("totJ").value = this.totJacson.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+
+       
+        let mariPagaOutput = document.getElementById('mariPagaOutput')
+        let jacPagaOutput = document.getElementById('jacPagaOutput')
+
+        if(this.totMarilza < this.totJacson){
+            //divisao - totjac
+           let jacPaga =  this.divisao - this.totJacson;
+           //mariPagaOutput.classList.add("hiddenResults")
+           document.getElementById('jacPaga').value = jacPaga.toLocaleString('pt-BR', {style : "currency", currency: 'BRL'})
+
+        }else{
+            //divisao - marilza
+           let mariPaga =  this.divisao - this.totMarilza
+           //jacPagaOutput.classList.add("hiddenResult")
+            document.getElementById('mariPaga'). value = mariPaga.toLocaleString('pt-BR', {style : "currency", currency: 'BRL'})
+        }
         //document.getElementById("divisao").
 
 
@@ -345,12 +404,13 @@ class Venda{
         venda.nomeCliente = document.getElementById("inputCliente").value;
         
         venda.quantidade = document.getElementById('inputQuantidade').value
-        let qt = Number(venda.quantidade)
+        let qt = parseFloat(venda.quantidade)
     
         venda.produto = this.getTipo();
 
         venda.milheiro = document.getElementById("inputMilheiro").value;
-       let m = Number(venda.milheiro)
+       let m = parseFloat(venda.milheiro)
+
         venda.socio = this.getSocio();
 
         venda.valor = this.valorVenda(qt, m);
@@ -460,16 +520,19 @@ class Venda{
         
         if (q >= 10000){
             let valor =  (q * m) / 1000
+            console.log("valor maior que 10k: " + valor, typeof(valor))
+           
+
 
             return valor
 
         } else if (q >= 1000 || q<= 1000){
-            let valor = (q * m ) / 100
+            let valor = (q * m ) / 1000
+            console.log("valor menos de 10k: " + valor, typeof(valor))
+            
             return valor
 
-            console.log(typeof(valor))
-            console.log(valor)
-
+            
         }
             
 
