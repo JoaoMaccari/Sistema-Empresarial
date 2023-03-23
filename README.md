@@ -12,19 +12,14 @@
 
 <h2>Tabela após inserção de dados</h2>
 
-<h3 align="center">
-    <img alt="readme"  title="readme" src="sistemaEmpimagem.png" >
-</h3>
-
+![sistemaEmplistagem](https://user-images.githubusercontent.com/101708181/227343171-c873af91-c29a-46a0-b431-e99b1f51b619.png)
 <hr>
 
 <p>Após a inserção de todos os valores, é realizado uma varredura na tabela trazendo dados como a quantidade total de produtos vendidos e quanto de cada tipo produto foi vendido.</p>
 
 <p>Além disso, ocorre a  listagem do valor total das vendas, a quantidade que cada sócio recebeu, e a divisão entre ambas as partes</p>
 
-<h3 align="center">
-    <img alt="readme"  title="readme" src="sistemaEmplistagem.png" >
-</h3>
+![sistemaEmpimagem](https://user-images.githubusercontent.com/101708181/227343184-a831a100-e886-4f3b-88cb-97ed72811018.png)
 
 ##Tecnologias usadas:
 
