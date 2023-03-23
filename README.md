@@ -7,23 +7,25 @@
 <h2>Adicionando itens na aplicação.</h2>
  
 <h3 align="center">
-    <img alt="readme"  title="readme" src="./sistemaEmp.gif" >
+    <img alt="readme"  title="readme" src="sistemaEmp.gif" >
 </h3>
 
-<p>Tabela preenchida após a inserção das vendas</p>
-<p>Junto a listagem dos valores ocorre a inserção do valor da venda na tabela</p>
+
+
+<h2>Tabela após inserção de dados</h2>
 
 <h3 align="center">
-    <img alt="readme"  title="readme" src="./sistemaEmpimagem.png" >
+    <img alt="readme"  title="readme" src="sistemaEmpimagem.png" >
 </h3>
 
+<hr>
 
-<p>Após a inserção de todos os valores, é realizado uma varredura na tabela trazendo dados como a quantidade total de produtos vendidos e quanto de cada produto foi vendido.</p>
+<p>Após a inserção de todos os valores, é realizado uma varredura na tabela trazendo dados como a quantidade total de produtos vendidos e quanto de cada tipo produto foi vendido.</p>
 
 <p>Além disso, ocorre a  listagem do valor total das vendas, a quantidade que cada sócio recebeu, e a divisão entre ambas as partes</p>
 
 <h3 align="center">
-    <img alt="readme"  title="readme" src="./sistemaEmplistagem.png" >
+    <img alt="readme"  title="readme" src="sistemaEmplistagem.png" >
 </h3>
 
 ##Tecnologias usadas:
