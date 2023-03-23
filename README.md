@@ -6,9 +6,7 @@
 
 <h2>Adicionando itens na aplicação.</h2>
  
-<h3 align="center">
-    <img alt="readme"  title="readme" src="sistemaEmp.gif" >
-</h3>
+![sistemaEmp](https://user-images.githubusercontent.com/101708181/227342281-dca45b61-9bf5-4c25-b8b8-a747075d36cc.gif)
 
 
 
