@@ -1,8 +1,7 @@
-# Sistema Empresarial Cerâmica Construir
+# Sistema Empresarial Cerâmica Construir.
 
-<p>Front-end de Uma aplicação feita por mim onde é realizado um CRUD. Seguida pela listagem de alguns valores referente aos dados inseridos na tabela<p>
+<p>Desenvolvi o front-end de uma aplicação com funcionalidade CRUD para armazenar dados de vendas realizadas pela empresa. Além disso, a aplicação permite a visualização da quantidade de produtos vendidos durante uma semana, o número de vendas realizadas por cada sócio e a divisão de lucros entre eles.<p>
 
-<p>A aplicação tem o intuito não apenas guardar os valores de cada venda realizada pela empresa, mas também mostrar a quantidade de cada produto vendido durante o período de uma semana, quantas vendas cada sócio realizou e a divisão entre ambas as partes</p>
 
 <h2>Campos de input:</h2>
 <ul>
@@ -23,18 +22,20 @@
 
 ![sistemaEmpimagem](https://user-images.githubusercontent.com/101708181/227379255-66210f41-d4cd-40e9-99a4-b6ed9c79156d.png)
 
+
+
 <hr>
 
 
 
-<p>Após a inserção de todos os valores, é realizado uma varredura na tabela trazendo dados como:</p>
+<p>Após o registro dos valores, a tabela é submetida a uma análise que resulta na apresentação das seguintes informações</p>
 
 <ul>
     <li>Quantidade total de produtos vendidos</li>
     <li>Quantidade de cada tipo de produto vendido</li>
     <li>Valor total das vendas</li>
-    <li>Valor que cada sócio recebeu</li>
-    <li>Qual sócio recebeu o maior valor e vai pagar a diferença</li>
+    <li>Valor recebido por cada sócio</li>
+    <li>Sócio que recebeu o maior valor e a diferença a ser paga por ele.</li>
 </ul>
 
 
