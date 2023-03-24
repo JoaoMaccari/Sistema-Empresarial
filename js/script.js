@@ -132,7 +132,7 @@ class Venda{
         document.getElementById("Total").value = this.valorTotalVendas.toLocaleString('pt-BR', {style : "currency", currency: 'BRL' } );
 
         this.divisao = this.valorTotalVendas / 2
-        document.getElementById('divisao').value = this.divisao
+        document.getElementById('divisao').value = this.divisao.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
         document.getElementById("totM").value = this.totMarilza.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
         document.getElementById("totJ").value = this.totJacson.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
 
